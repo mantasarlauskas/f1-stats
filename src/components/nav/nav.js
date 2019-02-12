@@ -12,40 +12,83 @@ class Nav extends Component {
         'Drivers',
         'Standings'
       ],
-      displayAdditional: false
-    }
+      displayAdditional: ''
+    };
   }
 
-  showAdditional = () => {
+  showAdditional = item => {
     this.setState({
-      displayAdditional: true
-    })
+      displayAdditional: item
+    });
+  };
+
+  hideAdditional = () => {
+    this.setState({
+      displayAdditional: ''
+    });
   };
 
   renderDriver = ({ givenName, familyName, driverId }) => {
     return (
-      <div key={driverId} className={'menu__additional__driver'}>
-        {givenName}<span className={'menu__additional__driver__lastname'}>{familyName}</span>
+      <div key={driverId} className={'driver'}>
+        {givenName}
+        <span className={'driver__lastname'}>
+          {familyName}
+        </span>
       </div>
     )
   };
 
-  render() {
-    const { navItems, displayAdditional } = this.state;
+  renderTeam = ({ name, constructorId }) => {
+    return (
+      <div key={constructorId} className={'team'}>
+        <span className={'team__title'}>
+          {name}
+        </span>
+        <div className={'team__logo'}>
+          <img src={`/src/img/teams/${constructorId}.png`}  alt={`${name}`}/>
+        </div>
+      </div>
+    )
+  };
+
+  renderAdditional = () => {
+    const { displayAdditional } = this.state;
     const { drivers, teams } = this.props;
+    return displayAdditional === 'Drivers' ? (
+        <div className={'menu__item__additional'}>
+          {drivers.map(this.renderDriver)}
+        </div>
+      ) : displayAdditional === 'Teams' ? (
+        <div className={'menu__item__additional'}>
+          {teams.map(this.renderTeam)}
+        </div>
+      ) : null;
+  };
+
+  renderMenuItem = item => {
+    const { displayAdditional } = this.state;
+    return (
+      <li
+        onMouseOver={() => this.showAdditional(item)}
+        onMouseLeave={this.hideAdditional}
+        key={item}
+        className={'menu__item'}
+      >
+        {item}
+        {item === displayAdditional && this.renderAdditional()}
+      </li>
+    );
+  };
+
+  render() {
+    const { navItems } = this.state;
     return (
       <nav className={'nav'}>
         <F1Logo className={'nav__logo'} />
         <ul className={'menu'}>
-          {navItems.map(item => (
-            <li onMouseOver={this.showAdditional} key={item} className={'menu__item'}>{item}</li>
-          ))}
+          {navItems.map(this.renderMenuItem)}
         </ul>
-        {displayAdditional && (
-          <div className={'menu__additional'}>
-            {drivers.map(this.renderDriver)}
-          </div>
-        )}
       </nav>
     )
   }

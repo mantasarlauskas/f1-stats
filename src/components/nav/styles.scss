@@ -29,16 +29,9 @@
   &:hover {
     background-color: rgb(21, 21, 30);
   }
-
-  &::after {
-    display: inline-block;
-    margin-top: 1px;
-    right: 10px;
-    content: "->";
-  }
 }
 
-.menu__additional {
+.menu__item__additional {
   position: fixed;
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -47,6 +40,7 @@
   top: 100px;
   left: 0;
   width: 100%;
+  line-height: 20px;
   z-index: 1;
   height: 400px;
   padding: 50px 5%;
@@ -54,7 +48,8 @@
   color: #FFF;
 }
 
-.menu__additional__driver {
+.driver,
+.team {
   border: 1px #FFF solid;
   border-top: none;
   border-left: none;
@@ -62,8 +57,19 @@
   cursor: pointer;
 }
 
-.menu__additional__driver__lastname {
+.driver__lastname,
+.team__title {
   display: inline-block;
   margin-left: 5px;
   font-weight: bold;
+}
+
+.team__title {
+  display: block;
+}
+
+.team__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
