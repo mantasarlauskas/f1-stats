@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { setDrivers, setTeams } from '../actions/api';
+import { setDrivers, setTeams, setStandings } from '../actions/api';
 
 export const fetchData = () => dispatch => {
   dispatch(getDrivers());
   dispatch(getTeams());
+  dispatch(getStandings());
 };
 
 export const getDrivers = () => dispatch => {
@@ -21,3 +22,18 @@ export const getTeams = () => dispatch => {
       dispatch(setTeams(Constructors))
     );
 };
+
+export const getStandings = () => dispatch => {
+  axios
+    ('http://ergast.com/api/f1/2018/driverStandings.json')
+    .then(({ data: { MRData: { StandingsTable: { StandingsLists } } }}) =>
+      dispatch(setStandings(parseStandings(StandingsLists[0].DriverStandings)))
+    );
+};
+
+const parseStandings = data => data.map(({ Constructors, Driver: { driverId }, ...data }) => ({
+  constructorId: Constructors[0].constructorId,
+  driverId,
+  ...data
+}));
+

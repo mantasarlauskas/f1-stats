@@ -1,6 +1,7 @@
 const initialState = {
   drivers: [],
-  teams: []
+  teams: [],
+  standings: []
 };
 
 export default (state = initialState, action) => {
@@ -9,6 +10,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         drivers: action.payload
+      };
+    case 'SET_STANDINGS':
+      return {
+        ...state,
+        standings: action.payload
       };
     case 'SET_TEAMS':
       return {
