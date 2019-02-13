@@ -82,8 +82,8 @@ class Menu extends Component {
         >
           {item}
           {item === displayAdditional && standings.length > 0 &&
-          teams.length > 0 && drivers.length > 0 &&
-          this.renderAdditional()
+            teams.length > 0 && drivers.length > 0 &&
+            this.renderAdditional()
           }
         </li>
       </Link>

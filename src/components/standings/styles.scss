@@ -1,0 +1,73 @@
+.title {
+  text-align: center;
+  color: gray;
+  margin: 30px 0;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.drivers {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.driver {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 1fr 80px;
+  height: 60px;
+  justify-items: center;
+  align-items: center;
+  border: 1px gray solid;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.driver__number-wrapper {
+  background-color: rgb(176, 176, 176);
+  color: #FFF;
+  font-weight: bold;
+  width: 40px;
+  height: 28px;
+  line-height: 14px;
+  padding: 7px 10px 7px 0;
+  transform: skew(-30deg);
+  margin-left: 15px;
+  text-align: center;
+  justify-self: start;
+}
+
+.driver__number {
+  display: inline-block;
+  transform: skew(30deg);
+}
+
+.driver__team {
+  color: gray;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.driver__number-color {
+  display: inline-block;
+  width: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.driver__name {
+  text-align: center;
+}
+
+.driver__name--bold {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.driver__points {
+  font-weight: 700;
+  text-align: right
+}
