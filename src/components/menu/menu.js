@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AdditionalMenu from '../additionalMenu';
+import { hideAdditionalMenu, showAdditionalMenu } from '../../actions/additionalMenu';
 import './styles.scss';
 
 class Menu extends Component {
@@ -8,85 +10,51 @@ class Menu extends Component {
     super(props);
     this.state = {
       menuItems: [
-        'Teams',
-        'Drivers',
-        'Standings'
+        {
+          type: 0,
+          title: 'Teams',
+          url: null
+        },
+        {
+          type: 0,
+          title: 'Drivers',
+          url: null
+        },
+        {
+          type: 1,
+          title: 'Driver Standings',
+          url: 'driver-standings'
+        }
       ],
-      displayAdditional: ''
     };
   }
 
-  showAdditional = item => {
-    this.setState({
-      displayAdditional: item
-    });
+  renderAdditional = title => {
+    const { isLoading, additionalMenu } = this.props;
+    return title === additionalMenu && !isLoading && <AdditionalMenu title={additionalMenu} />;
   };
 
-  hideAdditional = () => {
-    this.setState({
-      displayAdditional: ''
-    });
-  };
-
-  renderDriver = ({ givenName, familyName, driverId }) => {
-    const { standings } = this.props;
-    const { constructorId } = standings.find(item => item.driverId === driverId);
-    return (
-      <div key={driverId} className={'menu__driver'}>
-        <span className={`menu__driver__team background-color-${constructorId}`} />
-        {givenName}
-        <span className={'menu__driver__lastname'}>
-          {familyName}
-        </span>
-      </div>
-    )
-  };
-
-  renderTeam = ({ name, constructorId }) => {
-    return (
-      <div key={constructorId} className={'menu__team'}>
-        <div className={'menu__team__title'}>
-          {name}
-        </div>
-        <div className={'menu__team__logo'}>
-          <span className={`menu__team__logo__color background-color-${constructorId}`} />
-          <img src={`/src/img/teams/${constructorId}.png`} alt={`${name}`}/>
-        </div>
-      </div>
-    )
-  };
-
-  renderAdditional = () => {
-    const { displayAdditional } = this.state;
-    const { drivers, teams } = this.props;
-    return displayAdditional === 'Drivers' ? (
-      <div className={'menu__item__additional'}>
-        {drivers.map(this.renderDriver)}
-      </div>
-    ) : displayAdditional === 'Teams' ? (
-      <div className={'menu__item__additional'}>
-        {teams.map(this.renderTeam)}
-      </div>
-    ) : null;
-  };
-
-  renderMenuItem = item => {
-    const { displayAdditional } = this.state;
-    const { standings, teams, drivers } = this.props;
-    return (
-      <Link key={item} to={`/${item.toLowerCase()}`}>
-        <li
-          onMouseOver={() => this.showAdditional(item)}
-          onMouseLeave={this.hideAdditional}
-          className={'menu__item'}
-        >
-          {item}
-          {item === displayAdditional && standings.length > 0 &&
-            teams.length > 0 && drivers.length > 0 &&
-            this.renderAdditional()
-          }
-        </li>
+  renderMenu = ({ type, title, url }) => {
+    return type ? (
+      <Link key={title} className={'menu__item__text'} to={`/${url.toLowerCase()}`}>
+        {this.renderMenuItem(type, title)}
       </Link>
+    ) : this.renderMenuItem(type, title);
+  };
+
+  renderMenuItem = (type, title) => {
+    const { onItemHover, onItemLeave, additionalMenu } = this.props;
+    return (
+      <li
+        key={title}
+        className={'menu__item'}
+        onMouseLeave={onItemLeave}
+        onClick={() => type && onItemLeave()}
+        onMouseOver={() => !type && !additionalMenu && onItemHover(title)}
+      >
+        {title}
+        {this.renderAdditional(title)}
+      </li>
     );
   };
 
@@ -94,17 +62,20 @@ class Menu extends Component {
     const { menuItems } = this.state;
     return (
       <ul className={'menu'}>
-        {menuItems.map(this.renderMenuItem)}
+        {menuItems.map(this.renderMenu)}
       </ul>
     )
   }
 }
 
-
-const mapStateToProps = ({ api: { drivers, teams, standings } }) => ({
-  drivers,
-  teams,
-  standings
+const mapStateToProps = ({ api: { isLoading }, additionalMenu }) => ({
+  isLoading,
+  additionalMenu
 });
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = dispatch => ({
+  onItemHover: item => dispatch(showAdditionalMenu(item)),
+  onItemLeave: () => dispatch(hideAdditionalMenu())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

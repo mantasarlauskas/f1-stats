@@ -4,7 +4,8 @@ import Main from '../main';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { fetchData } from '../../thunks/api';
 import Nav from '../nav';
-import Standings from '../standings';
+import Driver from '../driver';
+import DriverStandings from '../driverStandings';
 import './styles.scss';
 
 class App extends Component {
@@ -19,7 +20,8 @@ class App extends Component {
         <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/standings" component={Standings} />
+          <Route path="/driver-standings" component={DriverStandings} />
+          <Route path="/driver/:id" component={Driver} />
         </Switch>
       </Fragment>
     );

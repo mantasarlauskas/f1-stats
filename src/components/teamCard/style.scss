@@ -1,0 +1,26 @@
+.team-card {
+  border: 1px #FFF solid;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+.team-card__title {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.team-card__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-card__logo__color {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin-right: -30px;
+}

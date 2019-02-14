@@ -1,0 +1,9 @@
+.loading {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+}
+
+.loading__text {
+  margin-top: 10px;
+}

@@ -1,0 +1,52 @@
+.container {
+  background-color: #f7f4f1;
+  height: calc(100vh - 100px);
+  padding-top: 50px;
+}
+
+.driver {
+  background-color: #FFF;
+  width: 90%;
+  margin: 0 auto;
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 50% 45%;
+  grid-column-gap: 5%;
+}
+
+.driver__image {
+  background: linear-gradient(to left, #000, #f7f4f1);
+  border-radius: 5px;
+}
+
+.driver__section {
+  padding: 15px;
+}
+
+.driver__name {
+  font-weight: bold;
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.driver__info {
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.driver__info__title {
+  font-weight: 700;
+}
+
+.driver__info__title,
+.driver__info__value {
+  font-size: 24px;
+  text-align: left;
+}
+
+.driver__empty {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}

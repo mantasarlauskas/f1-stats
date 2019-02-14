@@ -1,0 +1,17 @@
+.additional-menu {
+  position: fixed;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  line-height: 20px;
+  z-index: 1;
+  height: 400px;
+  padding: 50px 5%;
+  background-color: rgb(21, 21, 30);
+  color: #FFF;
+  cursor: default;
+}

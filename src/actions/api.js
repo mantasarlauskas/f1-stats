@@ -1,3 +1,7 @@
+export const toggleLoading = () => ({
+  type: 'TOGGLE_LOADING'
+});
+
 export const setDrivers = drivers => ({
   type: 'SET_DRIVERS',
   payload: drivers
@@ -8,7 +12,7 @@ export const setTeams = teams => ({
   payload: teams
 });
 
-export const setStandings = standings => ({
-  type: 'SET_STANDINGS',
+export const setDriverStandings = standings => ({
+  type: 'SET_DRIVER_STANDINGS',
   payload: standings
 });

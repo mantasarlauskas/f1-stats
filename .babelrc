@@ -3,6 +3,8 @@
   "plugins": [
     "@babel/plugin-proposal-export-default-from",
     "inline-react-svg",
-    "@babel/plugin-proposal-class-properties"
+    "@babel/plugin-proposal-class-properties",
+    "emotion",
+    "@babel/plugin-transform-runtime"
   ]
 }

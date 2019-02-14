@@ -1,0 +1,24 @@
+.driver-card {
+  border: 1px #FFF solid;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.driver-card__lastname {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.driver-card__team {
+  display: inline-block;
+  height: 15px;
+  width: 2px;
+  margin-right: 5px;
+}
