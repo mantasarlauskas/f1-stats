@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { teamSelector } from '../../selectors/api';
+import { driverTeamSelector } from '../../selectors/api';
 import { hideAdditionalMenu } from '../../actions/additionalMenu';
 import './style.scss';
 
-const driverCard = ({ driverId, givenName, familyName, onRouteChange, team: { constructorId } }) => (
+const DriverCard = ({ driverId, givenName, familyName, onRouteChange, team: { constructorId } }) => (
   <Link
     onClick={onRouteChange}
     to={`/driver/${driverId}`}
@@ -20,11 +20,11 @@ const driverCard = ({ driverId, givenName, familyName, onRouteChange, team: { co
 );
 
 const mapStateToProps = (state, { driverId }) => ({
-  team: teamSelector(state, driverId)
+  team: driverTeamSelector(state, driverId)
 });
 
 const mapDispatchToProps = dispatch => ({
   onRouteChange: () => dispatch(hideAdditionalMenu())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(driverCard);
+export default connect(mapStateToProps, mapDispatchToProps)(DriverCard);

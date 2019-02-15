@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import DriverRow from '../driverRow';
-import './styles.scss';
 
 const DriverStandings = ({ driverStandings }) => (
   <Fragment>

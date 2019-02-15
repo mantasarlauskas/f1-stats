@@ -1,4 +1,4 @@
-.driver-row {
+.standings-row {
   display: grid;
   grid-template-columns: 80px 1fr 1fr 1fr 80px;
   height: 60px;
@@ -9,9 +9,25 @@
   border-left: none;
   border-bottom-right-radius: 5px;
   margin-bottom: 10px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 60px 1fr 1fr 60px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 60px 1fr 60px;
+  }
 }
 
-.driver-row__number-wrapper {
+.standings-row--short {
+  grid-template-columns: 160px 1fr 1fr 80px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 60px 1fr 60px;
+  }
+}
+
+.standings-row__number-wrapper {
   background-color: rgb(176, 176, 176);
   color: #FFF;
   font-weight: bold;
@@ -25,18 +41,18 @@
   justify-self: start;
 }
 
-.driver-row__number {
+.standings-row__number {
   display: inline-block;
   transform: skew(30deg);
 }
 
-.driver-row__team {
+.standings-row__driver-team {
   color: gray;
   text-align: center;
   text-transform: uppercase;
 }
 
-.driver-row__number-color {
+.standings-row__number-color {
   display: inline-block;
   width: 10px;
   position: absolute;
@@ -45,16 +61,16 @@
   height: 100%;
 }
 
-.driver-row__name {
+.standings-row__name {
   text-align: center;
 }
 
-.driver-row__name--bold {
+.standings-row__name--bold {
   font-weight: bold;
   margin-left: 5px;
 }
 
-.driver-row__points {
+.standings-row__points {
   font-weight: 700;
   text-align: right
 }

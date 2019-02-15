@@ -2,6 +2,7 @@ const initialState = {
   drivers: [],
   teams: [],
   driverStandings: [],
+  teamStandings: [],
   isLoading: false
 };
 
@@ -26,6 +27,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         teams: action.payload
+      };
+    case 'SET_TEAM_STANDINGS':
+      return {
+        ...state,
+        teamStandings: action.payload
       };
     default:
       return state;

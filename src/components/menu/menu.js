@@ -24,6 +24,11 @@ class Menu extends Component {
           type: 1,
           title: 'Driver Standings',
           url: 'driver-standings'
+        },
+        {
+          type: 1,
+          title: 'Team Standings',
+          url: 'team-standings'
         }
       ],
     };

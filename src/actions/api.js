@@ -16,3 +16,8 @@ export const setDriverStandings = standings => ({
   type: 'SET_DRIVER_STANDINGS',
   payload: standings
 });
+
+export const setTeamStandings = standings => ({
+  type: 'SET_TEAM_STANDINGS',
+  payload: standings
+});
