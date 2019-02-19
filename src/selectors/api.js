@@ -30,9 +30,11 @@ export const teamDriversSelector = createSelector(
   driversStandingsSelector, driversSelector, idSelector,
   (standings, drivers, id) => {
     if (standings.length > 0) {
-      const [ { driverId: firstDriver }, { driverId: secondDriver } ] =
-        standings.filter(({ constructorId }) => constructorId === id);
-      return drivers.filter(({ driverId }) => driverId === firstDriver || driverId === secondDriver);
+      const driverStandings = standings.filter(({ constructorId }) => constructorId === id);
+      if (driverStandings.length > 0) {
+        const [ { driverId: firstDriver }, { driverId: secondDriver } ] = driverStandings;
+        return drivers.filter(({ driverId }) => driverId === firstDriver || driverId === secondDriver);
+      }
     }
   }
 );

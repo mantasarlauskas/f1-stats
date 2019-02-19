@@ -7,7 +7,7 @@ import './styles.scss';
 export default () => (
   <header className={'header'}>
     <Link to={'/'}>
-      <F1Logo className={'nav__logo'} />
+      <F1Logo className={'header__logo'} />
     </Link>
     <Menu />
   </header>

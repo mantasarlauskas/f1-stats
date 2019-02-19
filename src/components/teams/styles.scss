@@ -1,0 +1,43 @@
+.teams {
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: auto auto;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: auto;
+  }
+}
+
+.teams__item {
+  border: 1px #000 solid;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+
+  &:hover {
+    border-color: #FFF;
+    background-color: #e10600;
+    border-radius: 5px;
+    color: #FFF;
+  }
+}
+
+.teams__item__title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.teams__item__image {
+  display: flex;
+  justify-content: center;
+}

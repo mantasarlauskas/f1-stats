@@ -13,12 +13,12 @@ class Menu extends Component {
         {
           type: 0,
           title: 'Teams',
-          url: null
+          url: 'teams'
         },
         {
           type: 0,
           title: 'Drivers',
-          url: null
+          url: 'drivers'
         },
         {
           type: 1,
@@ -29,6 +29,16 @@ class Menu extends Component {
           type: 1,
           title: 'Team Standings',
           url: 'team-standings'
+        },
+        {
+          type: 1,
+          title: 'Results',
+          url: 'results'
+        },
+        {
+          type: 1,
+          title: 'Schedule',
+          url: 'schedule'
         }
       ],
     };
@@ -39,36 +49,34 @@ class Menu extends Component {
     return title === additionalMenu && !isLoading && <AdditionalMenu title={additionalMenu} />;
   };
 
-  renderMenu = ({ type, title, url }) => {
-    return type ? (
-      <Link key={title} className={'menu__item__text'} to={`/${url.toLowerCase()}`}>
-        {this.renderMenuItem(type, title)}
-      </Link>
-    ) : this.renderMenuItem(type, title);
-  };
-
-  renderMenuItem = (type, title) => {
+  renderMenuItem = ({ type, title, url }) => {
     const { onItemHover, onItemLeave, additionalMenu } = this.props;
     return (
-      <li
+      <div
         key={title}
         className={'menu__item'}
         onMouseLeave={onItemLeave}
-        onClick={() => type && onItemLeave()}
         onMouseOver={() => !type && !additionalMenu && onItemHover(title)}
       >
-        {title}
+        <Link
+          to={`/${url.toLowerCase()}`}
+          className={'menu__item__text'}
+          onClick={onItemLeave}
+        >
+          {title}
+        </Link>
         {this.renderAdditional(title)}
-      </li>
+      </div>
+
     );
   };
 
   render() {
     const { menuItems } = this.state;
     return (
-      <ul className={'menu'}>
-        {menuItems.map(this.renderMenu)}
-      </ul>
+      <nav className={'menu'}>
+        {menuItems.map(this.renderMenuItem)}
+      </nav>
     )
   }
 }

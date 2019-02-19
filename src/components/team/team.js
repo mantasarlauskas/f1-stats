@@ -21,7 +21,7 @@ class Team extends Component {
 
   render() {
     const { team, teamStandings, isLoading, drivers } = this.props;
-    if(team && teamStandings && drivers) {
+    if (team && teamStandings && drivers.length > 0) {
       const { constructorId, name, nationality } = team;
       const { points, position, wins } = teamStandings;
       return (
@@ -33,7 +33,7 @@ class Team extends Component {
               </div>
               {drivers.map(({ givenName, familyName, driverId }) => (
                 <div key={driverId} className={'team__driver'}>
-                  <GiFullMotorcycleHelmet/>
+                  <GiFullMotorcycleHelmet />
                   <div className={'team__driver__name'}>
                     {`${givenName} ${familyName}`}
                   </div>
@@ -46,12 +46,10 @@ class Team extends Component {
                 {this.renderStats('Nationality', nationality)}
               </div>
             </div>
-            <div className={`background-color-${constructorId}`} />
-            <img
-              className={'team__image'}
-              src={`/src/img/teams_big/${constructorId}.jpg`}
-              alt={`${name}`}
-            />
+            <div className={`team__color background-color-${constructorId}`} />
+            <div className={'team__image'}>
+              <img src={`/src/img/teams_big/${constructorId}.jpg`} alt={`${name}`} />
+            </div>
           </div>
         </div>
       );

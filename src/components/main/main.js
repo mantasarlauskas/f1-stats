@@ -6,7 +6,7 @@ class Main extends Component {
   render() {
     return (
       <div className={'container'}>
-        kiras
+
       </div>
     )
   }

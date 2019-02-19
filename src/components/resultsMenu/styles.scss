@@ -1,0 +1,26 @@
+.results-menu {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 99;
+  width: 150px;
+  list-style: none;
+}
+
+.results-menu__item {
+  display: block;
+  background-color: #e10600;
+  color: #FFF;
+  cursor: pointer;
+  border: 1px #FFF solid;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.results-menu__item--active {
+  background-color: rgb(21, 21, 30);
+}

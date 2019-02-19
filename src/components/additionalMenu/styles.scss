@@ -9,9 +9,17 @@
   width: 100%;
   line-height: 20px;
   z-index: 1;
-  height: 400px;
+  min-height: 400px;
   padding: 50px 5%;
   background-color: rgb(21, 21, 30);
   color: #FFF;
   cursor: default;
+
+  @media (max-width: 992px) {
+    grid-template-columns: auto auto;
+  }
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 }

@@ -36,7 +36,7 @@ const getDriverStandings = () => async dispatch => {
 
 const getTeamStandings = () => async dispatch => {
   const { data: { MRData: { StandingsTable: { StandingsLists } } } } =
-    await axios('http://ergast.com/api/f1/2018/constructorStandings.json');
+    await axios('http://ergast.com/api/f1/2018/constructorStandings.json');;
   dispatch(setTeamStandings(parseTeamStandings(StandingsLists[0].ConstructorStandings)));
 };
 

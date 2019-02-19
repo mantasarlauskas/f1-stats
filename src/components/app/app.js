@@ -3,11 +3,16 @@ import { connect } from 'react-redux'
 import Main from '../main';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { fetchData } from '../../thunks/api';
-import Nav from '../nav';
+import Header from '../header';
 import Driver from '../driver';
 import Team from '../team';
 import DriverStandings from '../driverStandings';
 import TeamStandings from '../teamStandings';
+import Footer from '../footer';
+import Results from '../results';
+import RaceResults from '../raceResults';
+import Schedule from '../schedule';
+import Teams from '../teams';
 import './styles.scss';
 
 class App extends Component {
@@ -19,14 +24,23 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Nav />
-        <Switch>
-          <Route exact path='/' component={Main} />
-          <Route path='/driver-standings' component={DriverStandings} />
-          <Route path='/team-standings' component={TeamStandings} />
-          <Route path='/driver/:id' component={Driver} />
-          <Route path='/team/:id' component={Team} />
-        </Switch>
+        <div className={'page'}>
+          <Header />
+          <div className={'content'}>
+            <Switch>
+              <Route exact path='/' component={Main} />
+              <Route path='/driver-standings' component={DriverStandings} />
+              <Route path='/team-standings' component={TeamStandings} />
+              <Route path='/driver/:id' component={Driver} />
+              <Route path='/team/:id' component={Team} />
+              <Route exact path='/results' component={Results} />
+              <Route path='/results/:id' component={RaceResults} />
+              <Route path='/schedule' component={Schedule} />
+              <Route path='/teams' component={Teams} />
+            </Switch>
+          </div>
+        </div>
+        <Footer />
       </Fragment>
     );
   }
