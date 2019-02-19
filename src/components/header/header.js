@@ -5,11 +5,11 @@ import Menu from '../menu';
 import './styles.scss';
 
 export default () => (
-  <nav className={'nav'}>
+  <header className={'header'}>
     <Link to={'/'}>
       <F1Logo className={'nav__logo'} />
     </Link>
     <Menu />
-  </nav>
+  </header>
 );
 

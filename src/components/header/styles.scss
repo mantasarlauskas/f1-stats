@@ -1,12 +1,17 @@
-.nav {
+.header {
   background-color: rgb(225, 6, 0);
   height: 100px;
+  width: 100%;
   padding: 0 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
+  z-index: 99;
   align-items: center;
 }
 
-.nav__logo {
+.header__logo {
   width: 136px;
   height: 34px;
   cursor: pointer;
