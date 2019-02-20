@@ -43,13 +43,21 @@
 }
 
 .page {
-  min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 180px);
   padding-bottom: 30px;
   background-color: #f7f4f1;
+
+  @media (max-width: 992px) {
+    min-height: calc(100vh - 180px - 14px);
+  }
 }
 
 .content {
   margin-top: 100px;
+
+  @media (max-width: 992px) {
+    margin-top: 114px;
+  }
 }
 
 .empty {
@@ -60,14 +68,14 @@
 
 .title {
   text-align: center;
-  color: gray;
+  border-color: gray;
   padding: 30px 0;
   font-size: 24px;
   text-transform: uppercase;
 }
 
 .title--main {
-  color: black;
+  border-color: black;
   font-weight: bold;
   padding-bottom: 0;
 }
@@ -99,44 +107,44 @@
   }
 }
 
-.color-mercedes {
-  color: #00D2BE;
+.border-color-mercedes {
+  border-color: #00D2BE;
 }
 
-.color-ferrari {
-  color: #DC0000;
+.border-color-ferrari {
+  border-color: #DC0000;
 }
 
-.color-red_bull {
-  color: #1E41FF;
+.border-color-red_bull {
+  border-color: #1E41FF;
 }
 
-.color-renault {
-  color: #FFF500;
+.border-color-renault {
+  border-color: #FFF500;
 }
 
-.color-force_india {
-  color: #F596C8;
+.border-color-force_india {
+  border-color: #F596C8;
 }
 
-.color-haas {
-  color: #828282;
+.border-color-haas {
+  border-color: #828282;
 }
 
-.color-toro_rosso {
-  color: #469BFF;
+.border-color-toro_rosso {
+  border-color: #469BFF;
 }
 
-.color-mclaren {
-  color: #FF8700;
+.border-color-mclaren {
+  border-color: #FF8700;
 }
 
-.color-sauber {
-  color: #DC0000;
+.border-color-sauber {
+  border-color: #DC0000;
 }
 
-.color-williams {
-  color: #FFF;
+.border-color-williams {
+  border-color: #FFF;
 }
 
 .background-color-mercedes {

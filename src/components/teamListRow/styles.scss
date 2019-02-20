@@ -1,0 +1,27 @@
+.team-list-row {
+  border: 1px #000 solid;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  transition: background-color 0.25s ease-in, color 0.25s ease-in;
+
+  &:hover {
+    border-color: #FFF;
+    background-color: #e10600;
+    border-radius: 5px;
+    color: #FFF;
+  }
+}
+
+.team-list-row__title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.team-list-row__image {
+  display: flex;
+  justify-content: center;
+}

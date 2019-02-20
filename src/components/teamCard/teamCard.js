@@ -8,7 +8,7 @@ const TeamCard = ({ name, constructorId, onRouteChange }) => (
   <Link
     onClick={onRouteChange}
     to={`/team/${constructorId}`}
-    className={'team-card'}
+    className={`team-card border-color-${constructorId}`}
   >
     <div className={'team-card__title'}>
       {name}

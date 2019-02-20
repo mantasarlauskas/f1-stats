@@ -1,18 +1,49 @@
 .header {
   background-color: rgb(225, 6, 0);
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   padding: 0 10%;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
+  flex-wrap: wrap;
   z-index: 99;
   align-items: center;
+
+  @media (max-width: 992px) {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+.header__bars {
+  color: #FFF;
+  font-size: 32px;
+  cursor: pointer;
+
+  @media (min-width: 576px) {
+    display: none;
+  }
 }
 
 .header__logo {
-  width: 136px;
-  height: 34px;
-  cursor: pointer;
+  display: block;
+
+  @media (max-width: 992px) {
+    flex-basis: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 576px) {
+    flex-basis: 80%;
+  }
+
+  svg {
+    width: 136px;
+    height: 34px;
+    cursor: pointer;
+  }
 }

@@ -4,7 +4,7 @@ import './styles.scss';
 import DriverCard from '../driverCard';
 import TeamCard from '../teamCard';
 
-const additionalMenu = ({ title, drivers, teams }) => (
+const AdditionalMenu = ({ title, drivers, teams }) => (
   <div className={'additional-menu'}>
     {title === 'Teams' ? teams.map(team => <TeamCard key={team.constructorId} {...team} />) :
       drivers.map(driver => <DriverCard key={driver.driverId} {...driver} />
@@ -17,4 +17,4 @@ const mapStateToProps = ({ api: { drivers, teams } }) => ({
   teams
 });
 
-export default connect(mapStateToProps)(additionalMenu);
+export default connect(mapStateToProps)(AdditionalMenu);

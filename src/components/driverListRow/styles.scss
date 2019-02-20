@@ -1,0 +1,39 @@
+.driver-list-row {
+  font-size: 20px;
+  width: 350px;
+  height: 50px;
+  border: 1px #000 solid;
+  border-left: none;
+  border-top: none;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 5px 1fr;
+  grid-column-gap: 10px;
+  box-sizing: border-box;
+  color: #000;
+  text-decoration: none;
+
+  @media (max-width: 992px) {
+    width: 250px;
+  }
+
+  &:hover {
+    border-color: #FFF;
+    background-color: #e10600;
+    border-radius: 5px;
+    color: #FFF;
+
+    & > * {
+      height: 100%;
+    }
+  }
+}
+
+.driver-list-row__color {
+  display: inline-block;
+  height: 80%;
+  width: 5px;
+}

@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
-import TeamListRow from '../teamListRow';
 import { connect } from 'react-redux';
+import DriverListRow from '../driverListRow';
 import Loading from '../loading';
 import './styles.scss';
 
-const Teams = ({ teams, isLoading }) => {
+const Drivers = ({ isLoading, drivers }) => {
   if (!isLoading) {
     return (
       <Fragment>
         <div className={'title'}>
-          Teams
+          Drivers
         </div>
-        <div className={'teams'}>
-          {teams.map(row => <TeamListRow key={row.constructorId} {...row} />)}
+        <div className={'drivers'}>
+          {drivers.map(driver => <DriverListRow key={driver.driverId} {...driver} />)}
         </div>
       </Fragment>
     )
@@ -25,9 +25,9 @@ const Teams = ({ teams, isLoading }) => {
   }
 };
 
-const mapStateToProps = ({ api: { teams, isLoading } }) => ({
-  teams,
+const mapStateToProps = ({ api: { drivers, isLoading } }) => ({
+  drivers,
   isLoading
 });
 
-export default connect(mapStateToProps)(Teams);
+export default connect(mapStateToProps)(Drivers);

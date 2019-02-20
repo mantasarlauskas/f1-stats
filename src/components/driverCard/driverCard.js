@@ -9,7 +9,7 @@ const DriverCard = ({ driverId, givenName, familyName, onRouteChange, team: { co
   <Link
     onClick={onRouteChange}
     to={`/driver/${driverId}`}
-    className={'driver-card'}
+    className={`driver-card border-color-${constructorId}`}
   >
     <span className={`driver-card__team background-color-${constructorId}`} />
     {givenName}

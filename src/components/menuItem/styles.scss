@@ -1,0 +1,30 @@
+.menu-item {
+  display: inline-block;
+  color: #FFF;
+  cursor: pointer;
+  height: 100px;
+  line-height: 100px;
+  padding: 0 15px;
+
+  @media (max-width: 992px) {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: rgb(21, 21, 30);
+  }
+}
+
+.menu-item__text {
+  display: block;
+  height: 100%;
+  color: #FFF;
+  text-decoration: none;
+}
