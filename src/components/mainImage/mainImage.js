@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.scss';
 import { Link } from 'react-router-dom';
+import './styles.scss';
 
 export default () => (
   <div className={'main-image'}>

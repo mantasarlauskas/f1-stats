@@ -9,12 +9,19 @@ export default ({
   position,
   constructorId
 }) => (
-  <div className={isDriver ? 'standings-row' : 'standings-row standings-row--short'}>
+  <div
+    className={isDriver
+      ? 'standings-row'
+      : 'standings-row standings-row--short'}
+  >
     <div className={'standings-row__number-wrapper'}>
       <span className={'standings-row__number'}>
         {position}
       </span>
-      <span className={`standings-row__number-color background-color-${constructorId}`}/>
+      <span
+        className={'standings-row__number-color '
+        + `background-color-${constructorId}`}
+      />
     </div>
     {isDriver && (
       <div className={'standings-row__name'}>
@@ -24,10 +31,18 @@ export default ({
         </span>
       </div>
     )}
-    <div className={isDriver ? 'xs-hide standings-row__driver-team' : 'standings-row__name--bold'}>
+    <div
+      className={isDriver
+        ? 'xs-hide standings-row__driver-team'
+        : 'standings-row__name--bold'}
+    >
       {name}
     </div>
-    <img className={'m-hide'} src={`/src/img/teams/${constructorId}.png`} alt={`${name}`}/>
+    <img
+      className={'m-hide'}
+      src={`/src/img/teams/${constructorId}.png`}
+      alt={`${name}`}
+    />
     <div className={'standings-row__points'}>
       {points}
     </div>

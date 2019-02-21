@@ -1,1 +1,1 @@
-export default from './driverListRow';
+export { default } from './driverListRow';

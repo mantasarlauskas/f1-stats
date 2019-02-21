@@ -9,21 +9,24 @@ import {
 import './styles.scss';
 
 class Driver extends Component {
-  renderInfo = (title, value) => {
-    return (
-      <Fragment>
-        <div className={'driver__info__title'}>
-          {title}
-        </div>
-        <div className={'driver__info__value'}>
-          {value}
-        </div>
-      </Fragment>
-    )
-  };
+  renderInfo = (title, value) => (
+    <Fragment>
+      <div className={'driver__info__title'}>
+        {title}
+      </div>
+      <div className={'driver__info__value'}>
+        {value}
+      </div>
+    </Fragment>
+  );
 
   render() {
-    const { driver, driverStandings, team, isLoading } = this.props;
+    const {
+      driver,
+      driverStandings,
+      team,
+      isLoading
+    } = this.props;
     if (driver && driverStandings && team) {
       const { position, wins, points } = driverStandings;
       const { name } = team;
@@ -39,7 +42,10 @@ class Driver extends Component {
         <div className={'container'}>
           <div className={'driver'}>
             <div className={'driver__image'}>
-              <img src={`/src/img/drivers/${driverId}.png`} alt={`${driverId}`}/>
+              <img
+                src={`/src/img/drivers/${driverId}.png`}
+                alt={`${driverId}`}
+              />
             </div>
             <div className={'driver__section'}>
               <div className={'driver__name'}>
@@ -57,18 +63,17 @@ class Driver extends Component {
             </div>
           </div>
         </div>
-      )
-    } else {
-      return (
-        <div className={'container'}>
-          {isLoading ? <Loading/> : (
-            <div className={'empty'}>
-              Driver does not exist
-            </div>
-          )}
-        </div>
-      )
+      );
     }
+    return (
+      <div className={'container'}>
+        {isLoading ? <Loading /> : (
+          <div className={'empty'}>
+            Driver does not exist
+          </div>
+        )}
+      </div>
+    );
   }
 }
 

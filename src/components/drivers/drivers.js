@@ -12,17 +12,17 @@ const Drivers = ({ isLoading, drivers }) => {
           Drivers
         </div>
         <div className={'drivers'}>
-          {drivers.map(driver => <DriverListRow key={driver.driverId} {...driver} />)}
+          {drivers.map(driver => (
+            <DriverListRow key={driver.driverId} {...driver} />))}
         </div>
       </Fragment>
-    )
-  } else {
-    return (
-      <div className={'container'}>
-        <Loading />
-      </div>
-    )
+    );
   }
+  return (
+    <div className={'container'}>
+      <Loading />
+    </div>
+  );
 };
 
 const mapStateToProps = ({ api: { drivers, isLoading } }) => ({

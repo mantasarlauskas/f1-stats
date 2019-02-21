@@ -1,1 +1,1 @@
-export default from './teamListRow';
+export { default } from './teamListRow';

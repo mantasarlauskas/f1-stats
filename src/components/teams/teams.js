@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import TeamListRow from '../teamListRow';
 import { connect } from 'react-redux';
+import TeamListRow from '../teamListRow';
 import Loading from '../loading';
 import './styles.scss';
 
@@ -15,14 +15,13 @@ const Teams = ({ teams, isLoading }) => {
           {teams.map(row => <TeamListRow key={row.constructorId} {...row} />)}
         </div>
       </Fragment>
-    )
-  } else {
-    return (
-      <div className={'container'}>
-        <Loading />
-      </div>
-    )
+    );
   }
+  return (
+    <div className={'container'}>
+      <Loading />
+    </div>
+  );
 };
 
 const mapStateToProps = ({ api: { teams, isLoading } }) => ({

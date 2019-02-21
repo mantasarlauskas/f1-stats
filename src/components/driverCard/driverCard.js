@@ -5,7 +5,13 @@ import { driverTeamSelector } from '../../selectors/api';
 import { hideAdditionalMenu } from '../../actions/additionalMenu';
 import './style.scss';
 
-const DriverCard = ({ driverId, givenName, familyName, onRouteChange, team: { constructorId } }) => (
+const DriverCard = ({
+  driverId,
+  givenName,
+  familyName,
+  onRouteChange,
+  team: { constructorId }
+}) => (
   <Link
     onClick={onRouteChange}
     to={`/driver/${driverId}`}

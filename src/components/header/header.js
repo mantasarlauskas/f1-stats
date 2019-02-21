@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FaBars } from 'react-icons/fa';
-import F1Logo from '../../img/f1_logo.svg';
 import { Link } from 'react-router-dom';
+import F1Logo from '../../img/f1_logo.svg';
 import Menu from '../menu';
 import './styles.scss';
 
@@ -47,4 +47,3 @@ class Header extends Component {
 
 
 export default Header;
-

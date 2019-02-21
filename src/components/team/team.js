@@ -1,26 +1,33 @@
 import React, { Component, Fragment } from 'react';
-import { teamStandingsSelector, teamSelector, teamDriversSelector } from '../../selectors/api';
-import Loading from '../loading';
 import { connect } from 'react-redux';
 import { GiFullMotorcycleHelmet } from 'react-icons/gi';
+import {
+  teamStandingsSelector,
+  teamSelector,
+  teamDriversSelector
+} from '../../selectors/api';
+import Loading from '../loading';
 import './styles.scss';
 
 class Team extends Component {
-  renderStats = (title, value) => {
-    return (
-      <Fragment>
-        <div className={'team__stats__title'}>
-          {title}
-        </div>
-        <div className={'team__stats__value'}>
-          {value}
-        </div>
-      </Fragment>
-    )
-  };
+  renderStats = (title, value) => (
+    <Fragment>
+      <div className={'team__stats__title'}>
+        {title}
+      </div>
+      <div className={'team__stats__value'}>
+        {value}
+      </div>
+    </Fragment>
+  );
 
   render() {
-    const { team, teamStandings, isLoading, drivers } = this.props;
+    const {
+      team,
+      teamStandings,
+      isLoading,
+      drivers
+    } = this.props;
     if (team && teamStandings && drivers.length > 0) {
       const { constructorId, name, nationality } = team;
       const { points, position, wins } = teamStandings;
@@ -48,22 +55,24 @@ class Team extends Component {
             </div>
             <div className={`team__color background-color-${constructorId}`} />
             <div className={'team__image'}>
-              <img src={`/src/img/teams_big/${constructorId}.jpg`} alt={`${name}`} />
+              <img
+                src={`/src/img/teams_big/${constructorId}.jpg`}
+                alt={`${name}`}
+              />
             </div>
           </div>
         </div>
       );
-    } else {
-      return (
-        <div className={'container'}>
-          {isLoading ? <Loading/> : (
-            <div className={'empty'}>
-              Team does not exist
-            </div>
-          )}
-        </div>
-      )
     }
+    return (
+      <div className={'container'}>
+        {isLoading ? <Loading /> : (
+          <div className={'empty'}>
+            Team does not exist
+          </div>
+        )}
+      </div>
+    );
   }
 }
 

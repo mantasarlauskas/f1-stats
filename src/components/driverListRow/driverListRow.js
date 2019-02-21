@@ -4,9 +4,16 @@ import { Link } from 'react-router-dom';
 import { driverTeamSelector } from '../../selectors/api';
 import './styles.scss';
 
-const DriverListRow = ({ team: { constructorId }, givenName, driverId, familyName }) => (
+const DriverListRow = ({
+  team: { constructorId },
+  givenName,
+  driverId,
+  familyName
+}) => (
   <Link to={`/driver/${driverId}`} className={'driver-list-row'}>
-    <span className={`driver-list-row__color background-color-${constructorId}`} />
+    <span
+      className={`driver-list-row__color background-color-${constructorId}`}
+    />
     {`${givenName} ${familyName}`}
   </Link>
 );

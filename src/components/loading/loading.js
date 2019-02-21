@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.scss';
 import { ClipLoader } from 'react-spinners';
+import './styles.scss';
 
 export default () => (
   <div className={'loading'}>
@@ -8,10 +8,10 @@ export default () => (
       sizeUnit={'px'}
       size={100}
       color={'red'}
-      loading={true}
+      loading
     />
     <div className={'loading__text'}>
       Waiting...
     </div>
   </div>
-)
+);

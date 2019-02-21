@@ -1,6 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import Loading from '../loading';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import ScheduleRow from '../scheduleRow';
+import Loading from '../loading';
 
 class Schedule extends Component {
   constructor(props) {
@@ -13,27 +14,17 @@ class Schedule extends Component {
   }
 
   fetchData = async () => {
-    const { data: { MRData: { RaceTable: { Races } } } } =
-      await axios('http://ergast.com/api/f1/2019.json');
+    const {
+      data: { MRData: { RaceTable: { Races } } }
+    } = await axios('http://ergast.com/api/f1/2019.json');
     this.setRaces(Races);
   };
 
-  setRaces = races => {
+  setRaces = (races) => {
     this.setState({
       races,
       isLoading: false
     });
-  };
-
-  renderRow = ({ round, raceName, date, Circuit: { circuitName } }) => {
-    return (
-      <tr key={round} className={'table__row'}>
-        <td className={'xs-hide'}>{round}</td>
-        <td>{raceName}</td>
-        <td className={'m-hide'}>{circuitName}</td>
-        <td>{date}</td>
-      </tr>
-    )
   };
 
   render() {
@@ -50,20 +41,20 @@ class Schedule extends Component {
                 <th className={'xs-hide'}>Round</th>
                 <th>Race</th>
                 <th className={'m-hide'}>Circuit</th>
+                <th className={'xs-hide'}>Layout</th>
                 <th>Date</th>
               </tr>
-              {races.map(this.renderRow)}
+              {races.map(race => <ScheduleRow key={race.round} {...race} />)}
             </tbody>
           </table>
         </Fragment>
-      )
-    } else {
-      return (
-        <div className={'container'}>
-          <Loading />
-        </div>
-      )
+      );
     }
+    return (
+      <div className={'container'}>
+        <Loading />
+      </div>
+    );
   }
 }
 

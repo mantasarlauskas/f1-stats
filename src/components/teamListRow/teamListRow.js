@@ -15,4 +15,4 @@ export default ({ constructorId, name }) => (
       <img src={`/src/img/teams/${constructorId}.png`} alt={`${name}`} />
     </div>
   </Link>
-)
+);

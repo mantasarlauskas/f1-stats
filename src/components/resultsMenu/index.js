@@ -1,1 +1,1 @@
-export default from './resultsMenu';
+export { default } from './resultsMenu';

@@ -11,17 +11,17 @@ const DriverStandings = ({ driverStandings, isLoading }) => {
           2018 drivers championship
         </div>
         <div className={'standings'}>
-          {driverStandings.map(driver => <DriverRow key={driver.driverId} {...driver} />)}
+          {driverStandings.map(driver => (
+            <DriverRow key={driver.driverId} {...driver} />))}
         </div>
       </Fragment>
     );
-  } else {
-    return (
-      <div className={'container'}>
-        <Loading />
-      </div>
-    )
   }
+  return (
+    <div className={'container'}>
+      <Loading />
+    </div>
+  );
 };
 
 const mapStateToProps = ({ api: { driverStandings, isLoading } }) => ({

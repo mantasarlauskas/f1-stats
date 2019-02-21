@@ -1,10 +1,12 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
 const driversSelector = ({ api: { drivers } }) => drivers;
 const teamsSelector = ({ api: { teams } }) => teams;
-const driversStandingsSelector = ({ api: { driverStandings } }) => driverStandings;
 const teamsStandingsSelector = ({ api: { teamStandings } }) => teamStandings;
 const idSelector = (state, id) => id;
+const driversStandingsSelector = ({
+  api: { driverStandings }
+}) => driverStandings;
 
 export const driverSelector = createSelector(
   driversSelector, idSelector,
@@ -30,18 +32,26 @@ export const teamDriversSelector = createSelector(
   driversStandingsSelector, driversSelector, idSelector,
   (standings, drivers, id) => {
     if (standings.length > 0) {
-      const driverStandings = standings.filter(({ constructorId }) => constructorId === id);
+      const driverStandings = standings.filter(({
+        constructorId
+      }) => constructorId === id);
       if (driverStandings.length > 0) {
-        const [ { driverId: firstDriver }, { driverId: secondDriver } ] = driverStandings;
-        return drivers.filter(({ driverId }) => driverId === firstDriver || driverId === secondDriver);
+        const [
+          { driverId: firstDriver },
+          { driverId: secondDriver }
+        ] = driverStandings;
+        return drivers.filter(({
+          driverId
+        }) => driverId === firstDriver || driverId === secondDriver);
       }
     }
+    return [];
   }
 );
 
 export const driverTeamSelector = createSelector(
   teamsSelector, driverStandingsSelector,
-  (teams, standings) => teams.find(({ constructorId }) =>
-    standings && constructorId === standings.constructorId
-  )
+  (teams, standings) => teams.find(({
+    constructorId
+  }) => standings && constructorId === standings.constructorId)
 );

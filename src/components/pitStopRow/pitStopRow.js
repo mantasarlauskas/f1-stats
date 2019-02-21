@@ -3,7 +3,13 @@ import { connect } from 'react-redux';
 import { driverSelector, driverTeamSelector } from '../../selectors/api';
 import Loading from '../loading';
 
-const PitStopRow = ({ driver, team, stop, lap, duration }) => {
+const PitStopRow = ({
+  driver,
+  team,
+  stop,
+  lap,
+  duration
+}) => {
   if (team && driver) {
     const { givenName, familyName } = driver;
     const { constructorId, name } = team;
@@ -19,15 +25,14 @@ const PitStopRow = ({ driver, team, stop, lap, duration }) => {
         <td>{duration}</td>
       </tr>
     );
-  } else {
-    return (
-      <tr>
-        <td colSpan={6}>
-          <Loading />
-        </td>
-      </tr>
-    );
   }
+  return (
+    <tr>
+      <td colSpan={6}>
+        <Loading />
+      </td>
+    </tr>
+  );
 };
 
 const mapStateToProps = (state, { driverId }) => ({

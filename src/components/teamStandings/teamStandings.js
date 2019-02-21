@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import TeamRow from '../teamRow';
 import Loading from '../loading';
@@ -11,17 +11,17 @@ const TeamStandings = ({ teamStandings, isLoading }) => {
           2018 teams championship
         </div>
         <div className={'standings'}>
-          {teamStandings.map(team => <TeamRow key={team.constructorId} {...team} />)}
+          {teamStandings.map(team => (
+            <TeamRow key={team.constructorId} {...team} />))}
         </div>
       </Fragment>
     );
-  } else {
-    return (
-      <div className={'container'}>
-        <Loading />
-      </div>
-    );
   }
+  return (
+    <div className={'container'}>
+      <Loading />
+    </div>
+  );
 };
 
 const mapStateToProps = ({ api: { teamStandings, isLoading } }) => ({

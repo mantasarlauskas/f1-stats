@@ -6,9 +6,9 @@ import TeamCard from '../teamCard';
 
 const AdditionalMenu = ({ title, drivers, teams }) => (
   <div className={'additional-menu'}>
-    {title === 'Teams' ? teams.map(team => <TeamCard key={team.constructorId} {...team} />) :
-      drivers.map(driver => <DriverCard key={driver.driverId} {...driver} />
-    )}
+    {title === 'Teams'
+      ? teams.map(team => <TeamCard key={team.constructorId} {...team} />)
+      : drivers.map(driver => <DriverCard key={driver.driverId} {...driver} />)}
   </div>
 );
 

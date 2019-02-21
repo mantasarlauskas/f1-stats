@@ -10,7 +10,7 @@ export default ({
   Time,
   Driver: { givenName, familyName },
   Constructor: { name, constructorId }
-}) =>  (
+}) => (
   <tr key={number} className={'table__row'}>
     <td>{positionText}</td>
     <td className={'m-hide'}>{number}</td>

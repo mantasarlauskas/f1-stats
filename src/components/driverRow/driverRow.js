@@ -8,7 +8,7 @@ import {
 
 const DriverRow = ({ driver, team, ...data }) => (
   <StandingsRow
-    isDriver={true}
+    isDriver
     driver={driver}
     team={team}
     {...data}

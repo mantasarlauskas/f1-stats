@@ -10,8 +10,7 @@ const menuItems = [
 
 export default ({ id, url }) => (
   <div className={'results-menu'}>
-    {menuItems.map(item =>
-      <ResultsMenuItem key={item} id={id} url={url} item={item} />
-    )}
+    {menuItems.map(item => (
+      <ResultsMenuItem key={item} id={id} url={url} item={item} />))}
   </div>
 );
