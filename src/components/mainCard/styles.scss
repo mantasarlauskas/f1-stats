@@ -1,0 +1,36 @@
+.main-card {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .main-card__title {
+      border: 3px #FFF solid;
+    }
+  }
+
+  img {
+    width: 100%;
+    filter: brightness(60%);
+
+    &:hover {
+      filter: brightness(100%);
+    }
+  }
+}
+
+.main-card__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: #FFF;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 5px;
+  border: 3px rgba(0, 0, 0, 0.1) solid;
+  border-bottom-color: #FFF;
+  text-align: center;
+}
+

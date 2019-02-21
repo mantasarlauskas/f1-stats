@@ -1,0 +1,10 @@
+.main-info {
+  padding: 50px 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 25px;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
