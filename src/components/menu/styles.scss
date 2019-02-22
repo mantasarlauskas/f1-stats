@@ -2,9 +2,29 @@
   list-style-type: none;
   height: 100%;
   margin-left: 35px;
+  animation: show 0.5s;
 
   @media (max-width: 992px) {
     margin: 0;
+  }
+
+  @media (max-width: 576px) {
+    padding-top: 80px;
+    width: 250px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgb(225, 6, 0);
+  }
+}
+
+@keyframes show {
+  from {
+    left: -250px;
+  }
+  to {
+    left: 0;
   }
 }
 

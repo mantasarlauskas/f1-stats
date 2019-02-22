@@ -15,7 +15,7 @@ export default ({
     <td>{positionText}</td>
     <td className={'m-hide'}>{number}</td>
     <td>{`${givenName} ${familyName}`}</td>
-    <td>{name}</td>
+    <td className={'xs-hide'}>{name}</td>
     <td className={'l-hide'}>
       <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
     </td>

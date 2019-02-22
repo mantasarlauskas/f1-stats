@@ -35,8 +35,9 @@ const menuItems = [
   }
 ];
 
-export default () => (
+export default ({ onClose }) => (
   <nav className={'menu'}>
-    {menuItems.map(item => <MenuItem key={item.title} {...item} />)}
+    {menuItems.map(item => (
+      <MenuItem onClose={onClose} key={item.title} {...item} />))}
   </nav>
 );

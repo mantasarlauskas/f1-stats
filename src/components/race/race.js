@@ -12,7 +12,7 @@ export default ({ results }) => (
           <th>Position</th>
           <th className={'m-hide'}>Number</th>
           <th>Driver</th>
-          <th>Team</th>
+          <th className={'xs-hide'}>Team</th>
           <th className={'l-hide'}>Car</th>
           <th className={'m-hide'}>Laps</th>
           <th className={'xs-hide'}>Grid</th>

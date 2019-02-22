@@ -39,7 +39,7 @@ class Header extends Component {
         <Link to={'/'} className={'header__logo'}>
           <F1Logo />
         </Link>
-        {(showMenu || width > 576) && <Menu />}
+        {(showMenu || width > 576) && <Menu onClose={this.toggleMenu} />}
       </header>
     );
   }

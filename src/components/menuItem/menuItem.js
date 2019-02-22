@@ -15,7 +15,8 @@ const MenuItem = ({
   onItemHover,
   onItemLeave,
   additionalMenu,
-  isLoading
+  isLoading,
+  onClose
 }) => (
   <div
     key={title}
@@ -26,7 +27,7 @@ const MenuItem = ({
     <Link
       to={`/${url.toLowerCase()}`}
       className={'menu-item__text'}
-      onClick={onItemLeave}
+      onClick={window.innerWidth > 576 ? onItemLeave : onClose}
     >
       {title}
     </Link>
