@@ -14,6 +14,7 @@ import RaceResults from '../raceResults';
 import Schedule from '../schedule';
 import Teams from '../teams';
 import Drivers from '../drivers';
+import NoMatch from '../noMatch';
 import './styles.scss';
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
               <Route path={'/schedule'} component={Schedule} />
               <Route path={'/teams'} component={Teams} />
               <Route path={'/drivers'} component={Drivers} />
+              <Route component={NoMatch} />
             </Switch>
           </div>
         </div>

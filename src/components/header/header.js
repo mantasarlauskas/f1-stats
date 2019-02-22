@@ -31,15 +31,21 @@ class Header extends Component {
     }));
   };
 
+  closeMenu = () => {
+    this.setState({
+      showMenu: false
+    });
+  };
+
   render() {
     const { showMenu, width } = this.state;
     return (
       <header className={'header'}>
         <FaBars onClick={this.toggleMenu} className={'header__bars'} />
-        <Link to={'/'} className={'header__logo'}>
+        <Link onClick={this.closeMenu} to={'/'} className={'header__logo'}>
           <F1Logo />
         </Link>
-        {(showMenu || width > 576) && <Menu onClose={this.toggleMenu} />}
+        {(showMenu || width > 576) && <Menu onClose={this.closeMenu} />}
       </header>
     );
   }

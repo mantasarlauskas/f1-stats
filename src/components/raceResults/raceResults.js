@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import ResultsMenu from '../resultsMenu';
 import Qualifying from '../qualifying';
 import PitStops from '../pitStops';
 import Race from '../race';
 import Loading from '../loading';
+import NoMatch from '../noMatch';
 
 class RaceResults extends Component {
   constructor(props) {
@@ -73,19 +74,22 @@ class RaceResults extends Component {
           <div className={'title title--main'}>
             {`2018 Round ${id} results`}
           </div>
-          <Route
-            exact
-            path={`${url}/race`}
-            component={() => <Race results={race} />}
-          />
-          <Route
-            path={`${url}/qualifying`}
-            component={() => <Qualifying results={qualifying} />}
-          />
-          <Route
-            path={`${url}/pitstops`}
-            component={() => <PitStops results={pitStops} />}
-          />
+          <Switch>
+            <Route
+              exact
+              path={`${url}/race`}
+              component={() => <Race results={race} />}
+            />
+            <Route
+              path={`${url}/qualifying`}
+              component={() => <Qualifying results={qualifying} />}
+            />
+            <Route
+              path={`${url}/pitstops`}
+              component={() => <PitStops results={pitStops} />}
+            />
+            <Route component={NoMatch} />
+          </Switch>
           <ResultsMenu url={pathname} id={id} />
         </Fragment>
       );
