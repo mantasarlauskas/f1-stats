@@ -26,17 +26,17 @@ class RaceResults extends Component {
       data: {
         MRData: { RaceTable: { Races: RaceStats } }
       }
-    } = await axios(`http://ergast.com/api/f1/2018/${id}/results.json`);
+    } = await axios(`https://ergast.com/api/f1/2018/${id}/results.json`);
     const {
       data: {
         MRData: { RaceTable: { Races: QualifyingStats } }
       }
-    } = await axios(`http://ergast.com/api/f1/2018/${id}/qualifying.json`);
+    } = await axios(`https://ergast.com/api/f1/2018/${id}/qualifying.json`);
     const {
       data: {
         MRData: { RaceTable: { Races: PitStopStats } }
       }
-    } = await axios(`http://ergast.com/api/f1/2018/${id}/pitstops.json`);
+    } = await axios(`https://ergast.com/api/f1/2018/${id}/pitstops.json`);
     this.parseData(RaceStats, QualifyingStats, PitStopStats);
   };
 

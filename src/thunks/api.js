@@ -28,21 +28,21 @@ const parseTeamStandings = data => data.map(({
 const getDrivers = () => async (dispatch) => {
   const {
     data: { MRData: { DriverTable: { Drivers } } }
-  } = await axios('http://ergast.com/api/f1/2018/drivers.json');
+  } = await axios('https://ergast.com/api/f1/2018/drivers.json');
   dispatch(setDrivers(Drivers));
 };
 
 const getTeams = () => async (dispatch) => {
   const {
     data: { MRData: { ConstructorTable: { Constructors } } }
-  } = await axios('http://ergast.com/api/f1/2018/constructors.json');
+  } = await axios('https://ergast.com/api/f1/2018/constructors.json');
   dispatch(setTeams(Constructors));
 };
 
 const getDriverStandings = () => async (dispatch) => {
   const {
     data: { MRData: { StandingsTable: { StandingsLists } } }
-  } = await axios('http://ergast.com/api/f1/2018/driverStandings.json');
+  } = await axios('https://ergast.com/api/f1/2018/driverStandings.json');
   dispatch(
     setDriverStandings(parseDriverStandings(StandingsLists[0].DriverStandings))
   );
@@ -51,7 +51,7 @@ const getDriverStandings = () => async (dispatch) => {
 const getTeamStandings = () => async (dispatch) => {
   const {
     data: { MRData: { StandingsTable: { StandingsLists } } }
-  } = await axios('http://ergast.com/api/f1/2018/constructorStandings.json');
+  } = await axios('https://ergast.com/api/f1/2018/constructorStandings.json');
   dispatch(
     setTeamStandings(parseTeamStandings(StandingsLists[0].ConstructorStandings))
   );
