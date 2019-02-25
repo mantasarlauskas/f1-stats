@@ -16,7 +16,7 @@ class Schedule extends Component {
   fetchData = async () => {
     const {
       data: { MRData: { RaceTable: { Races } } }
-    } = await axios('http://ergast.com/api/f1/2019.json');
+    } = await axios('https://ergast.com/api/f1/2019.json');
     this.setRaces(Races);
   };
 

@@ -15,7 +15,7 @@ class Results extends Component {
   fetchData = async () => {
     const {
       data: { MRData: { RaceTable: { Races } } }
-    } = await axios('http://ergast.com/api/f1/2018.json');
+    } = await axios('https://ergast.com/api/f1/2018.json');
     this.setRaces(Races);
   };
 
