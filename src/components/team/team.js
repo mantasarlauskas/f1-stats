@@ -6,6 +6,7 @@ import {
   teamSelector,
   teamDriversSelector
 } from '../../selectors/api';
+import Images from '../../img/images';
 import Loading from '../loading';
 import './styles.scss';
 
@@ -56,8 +57,8 @@ class Team extends Component {
             <div className={`team__color background-color-${constructorId}`} />
             <div className={'team__image'}>
               <img
-                src={`/src/img/teams_big/${constructorId}.jpg`}
-                alt={`${name}`}
+                src={Images.teams_big[constructorId]}
+                alt={name}
               />
             </div>
           </div>

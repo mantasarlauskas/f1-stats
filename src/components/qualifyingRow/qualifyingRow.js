@@ -1,4 +1,5 @@
 import React from 'react';
+import Images from '../../img/images';
 
 export default ({
   position,
@@ -13,7 +14,7 @@ export default ({
     <td>{`${givenName} ${familyName}`}</td>
     <td>{name}</td>
     <td className={'l-hide'}>
-      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
+      <img src={Images.teams[constructorId]} alt={name} />
     </td>
     <td>{Q1}</td>
     <td>{Q2}</td>

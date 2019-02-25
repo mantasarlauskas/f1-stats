@@ -3,6 +3,7 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { hideAdditionalMenu } from '../../actions/additionalMenu';
+import Images from '../../img/images';
 
 const TeamCard = ({ name, constructorId, onRouteChange }) => (
   <Link
@@ -17,7 +18,7 @@ const TeamCard = ({ name, constructorId, onRouteChange }) => (
       <span className={'team-card__logo__color'
         + `background-color-${constructorId}`}
       />
-      <img src={`/src/img/teams/${constructorId}.png`} alt={`${name}`} />
+      <img src={Images.teams[constructorId]} alt={name} />
     </div>
   </Link>
 );

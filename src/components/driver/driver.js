@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Loading from '../loading';
+import Images from '../../img/images';
 import {
   driverSelector,
   driverStandingsSelector,
@@ -43,8 +44,8 @@ class Driver extends Component {
           <div className={'driver'}>
             <div className={'driver__image'}>
               <img
-                src={`/src/img/drivers/${driverId}.png`}
-                alt={`${driverId}`}
+                src={Images.drivers[driverId]}
+                alt={driverId}
               />
             </div>
             <div className={'driver__section'}>

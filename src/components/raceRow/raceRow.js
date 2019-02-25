@@ -1,4 +1,5 @@
 import React from 'react';
+import Images from '../../img/images';
 
 export default ({
   number,
@@ -17,7 +18,7 @@ export default ({
     <td>{`${givenName} ${familyName}`}</td>
     <td className={'xs-hide'}>{name}</td>
     <td className={'l-hide'}>
-      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
+      <img src={Images.teams[constructorId]} alt={name} />
     </td>
     <td className={'m-hide'}>{laps}</td>
     <td className={'xs-hide'}>{grid}</td>

@@ -33,6 +33,7 @@
         "react/jsx-curly-brace-presence": ["error", { "props": "always" }],
         "max-len": ["error", { "code": 80 }],
         "jsx-a11y/mouse-events-have-key-events": "off",
-        "react/no-array-index-key": "off"
+        "react/no-array-index-key": "off",
+        "global-require": "off"
     }
 }

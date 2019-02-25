@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Images from '../../img/images';
 import './styles.scss';
 
 export default ({
@@ -10,8 +11,8 @@ export default ({
 }) => (
   <Link to={`/${url}`} className={'main-card'}>
     <img
-      src={`/src/img/teams_big/${constructorId}.jpg`}
-      alt={`${name}`}
+      src={Images.teams_big[constructorId]}
+      alt={name}
     />
     <div className={'main-card__title'}>
       {title}

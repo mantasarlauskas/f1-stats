@@ -1,4 +1,5 @@
 import React from 'react';
+import Images from '../../img/images';
 import './styles.scss';
 
 export default ({
@@ -40,8 +41,8 @@ export default ({
     </div>
     <img
       className={'m-hide'}
-      src={`/src/img/teams/${constructorId}.png`}
-      alt={`${name}`}
+      src={Images.teams[constructorId]}
+      alt={name}
     />
     <div className={'standings-row__points'}>
       {points}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Images from '../../img/images';
 
 export default ({
   round,
@@ -15,8 +16,8 @@ export default ({
     <td className={'xs-hide'}>
       <img
         className={'circuit'}
-        src={`/src/img/circuits/${circuitId}.png`}
-        alt={`${circuitName}`}
+        src={Images.circuits[circuitId]}
+        alt={circuitName}
       />
     </td>
     <td>{date}</td>

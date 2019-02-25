@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import { Link } from 'react-router-dom';
+import Images from '../../img/images';
 
 export default ({ constructorId, name }) => (
   <Link
@@ -12,7 +13,7 @@ export default ({ constructorId, name }) => (
       {name}
     </div>
     <div className={'team-list-row__image'}>
-      <img src={`/src/img/teams/${constructorId}.png`} alt={`${name}`} />
+      <img src={Images.teams[constructorId]} alt={name} />
     </div>
   </Link>
 );

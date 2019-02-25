@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { driverSelector, driverTeamSelector } from '../../selectors/api';
+import Images from '../../img/images';
 import Loading from '../loading';
 
 const PitStopRow = ({
@@ -18,7 +19,7 @@ const PitStopRow = ({
         <td>{`${givenName} ${familyName}`}</td>
         <td>{name}</td>
         <td className={'l-hide'}>
-          <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
+          <img src={Images.teams[constructorId]} alt={name} />
         </td>
         <td className={'xs-hide'}>{stop}</td>
         <td>{lap}</td>
