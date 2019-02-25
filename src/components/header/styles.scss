@@ -1,6 +1,5 @@
 .header {
   background-color: rgb(225, 6, 0);
-  min-height: 100px;
   width: 100%;
   padding: 0 10%;
   position: fixed;
@@ -40,6 +39,10 @@
     margin: 15px 0;
     display: flex;
     justify-content: center;
+  }
+
+  @media (max-width: 576px) {
+    flex-basis: auto;
   }
 
   svg {

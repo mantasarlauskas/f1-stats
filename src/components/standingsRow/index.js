@@ -1,1 +1,1 @@
-export { default } from './standingsRow';
+export default from './standingsRow';

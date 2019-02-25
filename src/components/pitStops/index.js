@@ -1,1 +1,1 @@
-export { default } from './pitStops';
+export default from './pitStops';

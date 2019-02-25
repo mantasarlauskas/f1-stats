@@ -1,1 +1,1 @@
-export { default } from './qualifyingRow';
+export default from './qualifyingRow';

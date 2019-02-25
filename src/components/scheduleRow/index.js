@@ -1,1 +1,1 @@
-export { default } from './scheduleRow';
+export default from './scheduleRow';

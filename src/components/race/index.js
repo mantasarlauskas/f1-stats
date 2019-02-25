@@ -1,1 +1,1 @@
-export { default } from './race';
+export default from './race';
