@@ -52,7 +52,7 @@ class Schedule extends Component {
     }
     return (
       <div className={'container'}>
-        <Loading />
+        <Loading size={100} />
       </div>
     );
   }

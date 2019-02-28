@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ClipLoader } from 'react-spinners';
 import './styles.scss';
 
-export default () => (
+const Loading = ({ size }) => (
   <div className={'loading'}>
     <ClipLoader
       sizeUnit={'px'}
-      size={100}
+      size={size}
       color={'red'}
       loading
     />
@@ -15,3 +16,9 @@ export default () => (
     </div>
   </div>
 );
+
+Loading.propTypes = {
+  size: PropTypes.number.isRequired
+};
+
+export default Loading;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { driverTeamSelector } from '../../selectors/api';
@@ -24,6 +25,16 @@ const DriverCard = ({
     </span>
   </Link>
 );
+
+DriverCard.propTypes = {
+  team: PropTypes.shape({
+    constructorId: PropTypes.string
+  }).isRequired,
+  onRouteChange: PropTypes.func.isRequired,
+  driverId: PropTypes.string.isRequired,
+  givenName: PropTypes.string.isRequired,
+  familyName: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state, { driverId }) => ({
   team: driverTeamSelector(state, driverId)

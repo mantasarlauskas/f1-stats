@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MenuItem from '../menuItem';
 import './styles.scss';
 
@@ -35,9 +36,15 @@ const menuItems = [
   }
 ];
 
-export default ({ onClose }) => (
+const Menu = ({ onClose }) => (
   <nav className={'menu'}>
     {menuItems.map(item => (
       <MenuItem onClose={onClose} key={item.title} {...item} />))}
   </nav>
 );
+
+Menu.propTypes = {
+  onClose: PropTypes.func.isRequired
+};
+
+export default Menu;

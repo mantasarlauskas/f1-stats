@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Images from '../../img/images';
 import './styles.scss';
 
-export default ({
+const StandingsRow = ({
   driver,
   team: { name },
   isDriver,
@@ -49,3 +50,20 @@ export default ({
     </div>
   </div>
 );
+
+StandingsRow.propTypes = {
+  driver: PropTypes.object,
+  team: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired,
+  isDriver: PropTypes.bool.isRequired,
+  points: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  constructorId: PropTypes.string.isRequired
+};
+
+StandingsRow.defaultProps = {
+  driver: {}
+};
+
+export default StandingsRow;

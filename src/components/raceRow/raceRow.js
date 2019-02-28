@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Images from '../../img/images';
 
-export default ({
+const RaceRow = ({
   number,
   status,
   points,
@@ -27,3 +28,29 @@ export default ({
     <td className={'xs-hide'}>{points}</td>
   </tr>
 );
+
+RaceRow.propTypes = {
+  number: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  points: PropTypes.string.isRequired,
+  positionText: PropTypes.string.isRequired,
+  laps: PropTypes.string.isRequired,
+  grid: PropTypes.string.isRequired,
+  Time: PropTypes.shape({
+    time: PropTypes.string
+  }),
+  Driver: PropTypes.shape({
+    givenName: PropTypes.string.isRequired,
+    familyName: PropTypes.string.isRequired,
+  }).isRequired,
+  Constructor: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    constructorId: PropTypes.string.isRequired
+  }).isRequired
+};
+
+RaceRow.defaultProps = {
+  Time: {}
+};
+
+export default RaceRow;

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { GiFullMotorcycleHelmet } from 'react-icons/gi';
 import {
@@ -29,7 +30,8 @@ class Team extends Component {
       isLoading,
       drivers
     } = this.props;
-    if (team && teamStandings && drivers.length > 0) {
+    if (Object.entries(team).length !== 0
+      && Object.entries(teamStandings).length !== 0 && drivers.length > 0) {
       const { constructorId, name, nationality } = team;
       const { points, position, wins } = teamStandings;
       return (
@@ -67,7 +69,7 @@ class Team extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading /> : (
+        {isLoading ? <Loading size={100} /> : (
           <div className={'empty'}>
             Team does not exist
           </div>
@@ -76,6 +78,13 @@ class Team extends Component {
     );
   }
 }
+
+Team.propTypes = {
+  team: PropTypes.object.isRequired,
+  teamStandings: PropTypes.object.isRequired,
+  drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = (state, { match: { params: { id } } }) => ({
   team: teamSelector(state, id),

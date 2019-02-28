@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { driverSelector, driverTeamSelector } from '../../selectors/api';
 import Images from '../../img/images';
@@ -11,7 +12,8 @@ const PitStopRow = ({
   lap,
   duration
 }) => {
-  if (team && driver) {
+  if (Object.entries(team).length !== 0
+    && Object.entries(driver).length !== 0) {
     const { givenName, familyName } = driver;
     const { constructorId, name } = team;
     return (
@@ -28,12 +30,20 @@ const PitStopRow = ({
     );
   }
   return (
-    <tr>
+    <tr className={'table__row--wait'}>
       <td colSpan={6}>
-        <Loading />
+        <Loading size={35} />
       </td>
     </tr>
   );
+};
+
+PitStopRow.propTypes = {
+  driver: PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired,
+  stop: PropTypes.string.isRequired,
+  lap: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state, { driverId }) => ({

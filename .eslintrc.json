@@ -26,7 +26,6 @@
     "rules": {
         "quotes": ["error", "single"],
         "react/jsx-filename-extension": "off",
-        "react/prop-types": "off",
         "comma-dangle": "off",
         "import/no-named-as-default-member": "off",
         "import/no-named-as-default": "off",
@@ -35,6 +34,7 @@
         "jsx-a11y/mouse-events-have-key-events": "off",
         "react/no-array-index-key": "off",
         "global-require": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "react/forbid-prop-types": "off"
     }
 }

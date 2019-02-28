@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import ResultsMenu from '../resultsMenu';
@@ -96,7 +97,7 @@ class RaceResults extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading /> : (
+        {isLoading ? <Loading size={100} /> : (
           <div className={'empty'}>
             Race does not exist
           </div>
@@ -105,5 +106,10 @@ class RaceResults extends Component {
     );
   }
 }
+
+RaceResults.propTypes = {
+  match: ReactRouterPropTypes.match.isRequired,
+  location: ReactRouterPropTypes.location.isRequired
+};
 
 export default RaceResults;

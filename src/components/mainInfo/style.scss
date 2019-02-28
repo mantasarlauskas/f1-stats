@@ -6,5 +6,9 @@
 
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
+
+    & > *:not(:last-child) {
+      margin-bottom: 30px;
+    }
   }
 }

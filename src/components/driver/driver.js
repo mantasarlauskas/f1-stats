@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loading from '../loading';
 import Images from '../../img/images';
@@ -28,7 +29,10 @@ class Driver extends Component {
       team,
       isLoading
     } = this.props;
-    if (driver && driverStandings && team) {
+    if (Object.entries(driver).length !== 0
+      && Object.entries(driverStandings).length !== 0
+      && Object.entries(team).length !== 0
+    ) {
       const { position, wins, points } = driverStandings;
       const { name } = team;
       const {
@@ -68,7 +72,7 @@ class Driver extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading /> : (
+        {isLoading ? <Loading size={100} /> : (
           <div className={'empty'}>
             Driver does not exist
           </div>
@@ -77,6 +81,14 @@ class Driver extends Component {
     );
   }
 }
+
+Driver.propTypes = {
+  driver: PropTypes.object.isRequired,
+  driverStandings: PropTypes.object.isRequired,
+  team: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired
+};
+
 
 const mapDispatchToProps = (state, { match: { params: { id } } }) => ({
   driver: driverSelector(state, id),

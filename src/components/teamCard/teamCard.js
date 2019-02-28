@@ -1,9 +1,10 @@
 import React from 'react';
-import './style.scss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { hideAdditionalMenu } from '../../actions/additionalMenu';
 import Images from '../../img/images';
+import './style.scss';
 
 const TeamCard = ({ name, constructorId, onRouteChange }) => (
   <Link
@@ -22,6 +23,12 @@ const TeamCard = ({ name, constructorId, onRouteChange }) => (
     </div>
   </Link>
 );
+
+TeamCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  constructorId: PropTypes.string.isRequired,
+  onRouteChange: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
   onRouteChange: () => dispatch(hideAdditionalMenu())

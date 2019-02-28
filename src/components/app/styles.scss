@@ -13,10 +13,14 @@
 
 .responsive-table {
   overflow-x: auto;
+
+  @media (max-width: 576px) {
+    margin: 0 5%;
+  }
 }
 
 .table {
-  margin: 0 5%;
+  margin: 0 auto;
   width: 90%;
   border-radius: 5px;
   border-collapse: collapse;
@@ -37,6 +41,12 @@
 
   td {
     padding: 5px;
+  }
+}
+
+.table__row--wait {
+  td {
+    height: 100px;
   }
 }
 

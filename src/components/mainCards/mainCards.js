@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MainCard from '../mainCard';
 import Loading from '../loading';
@@ -47,7 +48,15 @@ const MainCards = ({ teams, isLoading }) => {
       </div>
     );
   }
-  return <Loading />;
+  return <Loading size={100} />;
+};
+
+MainCards.propTypes = {
+  teams: PropTypes.arrayOf(PropTypes.shape({
+    constructorId: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })).isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = ({ api: { teams, isLoading } }) => ({

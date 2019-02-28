@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Images from '../../img/images';
 import './styles.scss';
 
-export default ({
+const MainCard = ({
   constructorId,
   name,
   url,
@@ -19,3 +20,12 @@ export default ({
     </div>
   </Link>
 );
+
+MainCard.propTypes = {
+  constructorId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
+};
+
+export default MainCard;

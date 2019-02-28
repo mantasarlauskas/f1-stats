@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import axios from 'axios';
 import Loading from '../loading';
 
@@ -73,10 +74,14 @@ class Results extends Component {
     }
     return (
       <div className={'container'}>
-        <Loading />
+        <Loading size={100} />
       </div>
     );
   }
 }
+
+Results.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired
+};
 
 export default Results;

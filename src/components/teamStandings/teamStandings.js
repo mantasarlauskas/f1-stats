@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TeamRow from '../teamRow';
 import Loading from '../loading';
@@ -19,9 +20,14 @@ const TeamStandings = ({ teamStandings, isLoading }) => {
   }
   return (
     <div className={'container'}>
-      <Loading />
+      <Loading size={100} />
     </div>
   );
+};
+
+TeamStandings.propTypes = {
+  teamStandings: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = ({ api: { teamStandings, isLoading } }) => ({

@@ -10,22 +10,24 @@ const driversStandingsSelector = ({
 
 export const driverSelector = createSelector(
   driversSelector, idSelector,
-  (drivers, id) => drivers.find(({ driverId }) => driverId === id)
+  (drivers, id) => drivers.find(({ driverId }) => driverId === id) || {}
 );
 
 export const teamSelector = createSelector(
   teamsSelector, idSelector,
-  (teams, id) => teams.find(({ constructorId }) => constructorId === id)
+  (teams, id) => teams.find(({ constructorId }) => constructorId === id) || {}
 );
 
 export const driverStandingsSelector = createSelector(
   driversStandingsSelector, idSelector,
-  (standings, id) => standings.find(({ driverId }) => driverId === id)
+  (standings, id) => standings.find(({ driverId }) => driverId === id) || {}
 );
 
 export const teamStandingsSelector = createSelector(
   teamsStandingsSelector, idSelector,
-  (standings, id) => standings.find(({ constructorId }) => constructorId === id)
+  (standings, id) => standings.find(({
+    constructorId
+  }) => constructorId === id) || {}
 );
 
 export const teamDriversSelector = createSelector(
@@ -44,6 +46,7 @@ export const teamDriversSelector = createSelector(
           driverId
         }) => driverId === firstDriver || driverId === secondDriver);
       }
+      return [];
     }
     return [];
   }
@@ -53,5 +56,5 @@ export const driverTeamSelector = createSelector(
   teamsSelector, driverStandingsSelector,
   (teams, standings) => teams.find(({
     constructorId
-  }) => standings && constructorId === standings.constructorId)
+  }) => standings && constructorId === standings.constructorId) || {}
 );

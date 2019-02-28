@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import RaceRow from '../raceRow';
 
-export default ({ results }) => (
+const Race = ({ results }) => (
   <Fragment>
     <div className={'title'}>
       Race
@@ -26,3 +27,9 @@ export default ({ results }) => (
     </table>
   </Fragment>
 );
+
+Race.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default Race;

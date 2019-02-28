@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import QualifyingRow from '../qualifyingRow';
 
-export default ({ results }) => (
+const Qualifying = ({ results }) => (
   <Fragment>
     <div className={'title'}>
       Qualifying
@@ -26,3 +27,9 @@ export default ({ results }) => (
     </div>
   </Fragment>
 );
+
+Qualifying.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default Qualifying;

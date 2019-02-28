@@ -1,9 +1,9 @@
-export default (state = null, action) => {
+export default (state = '', action) => {
   switch (action.type) {
     case 'SHOW_ADDITIONAL_MENU':
       return action.payload;
     case 'HIDE_ADDITIONAL_MENU':
-      return null;
+      return '';
     default:
       return state;
   }

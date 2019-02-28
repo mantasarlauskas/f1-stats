@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.scss';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -7,6 +7,7 @@ import {
   showAdditionalMenu
 } from '../../actions/additionalMenu';
 import AdditionalMenu from '../additionalMenu';
+import './styles.scss';
 
 const MenuItem = ({
   type,
@@ -35,6 +36,17 @@ const MenuItem = ({
       && !isLoading && <AdditionalMenu title={additionalMenu} />}
   </div>
 );
+
+MenuItem.propTypes = {
+  type: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  onItemHover: PropTypes.func.isRequired,
+  onItemLeave: PropTypes.func.isRequired,
+  additionalMenu: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 const mapStateToProps = ({ api: { isLoading }, additionalMenu }) => ({
   isLoading,

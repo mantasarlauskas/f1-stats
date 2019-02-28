@@ -1,9 +1,10 @@
 import React from 'react';
-import './styles.scss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Images from '../../img/images';
+import './styles.scss';
 
-export default ({ constructorId, name }) => (
+const TeamListRow = ({ constructorId, name }) => (
   <Link
     to={`/team/${constructorId}`}
     className={'team-list-row'}
@@ -17,3 +18,10 @@ export default ({ constructorId, name }) => (
     </div>
   </Link>
 );
+
+TeamListRow.propTypes = {
+  constructorId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};
+
+export default TeamListRow;

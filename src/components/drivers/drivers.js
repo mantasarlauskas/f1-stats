@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DriverListRow from '../driverListRow';
 import Loading from '../loading';
@@ -20,9 +21,14 @@ const Drivers = ({ isLoading, drivers }) => {
   }
   return (
     <div className={'container'}>
-      <Loading />
+      <Loading size={100} />
     </div>
   );
+};
+
+Drivers.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  drivers: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 const mapStateToProps = ({ api: { drivers, isLoading } }) => ({

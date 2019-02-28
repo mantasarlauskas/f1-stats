@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Images from '../../img/images';
 
-export default ({
+const QualifyingRow = ({
   position,
   number,
   Driver: { givenName, familyName },
@@ -21,3 +22,27 @@ export default ({
     <td>{Q3}</td>
   </tr>
 );
+
+QualifyingRow.propTypes = {
+  Driver: PropTypes.shape({
+    givenName: PropTypes.string.isRequired,
+    familyName: PropTypes.string.isRequired
+  }).isRequired,
+  Constructor: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    constructorId: PropTypes.string.isRequired
+  }).isRequired,
+  number: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  Q1: PropTypes.string,
+  Q2: PropTypes.string,
+  Q3: PropTypes.string
+};
+
+QualifyingRow.defaultProps = {
+  Q1: '',
+  Q2: '',
+  Q3: ''
+};
+
+export default QualifyingRow;

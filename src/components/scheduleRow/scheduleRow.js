@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Images from '../../img/images';
 
-export default ({
+const ScheduleRow = ({
   round,
   raceName,
   date,
@@ -23,3 +24,15 @@ export default ({
     <td>{date}</td>
   </tr>
 );
+
+ScheduleRow.propTypes = {
+  round: PropTypes.string.isRequired,
+  raceName: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  Circuit: PropTypes.shape({
+    circuitName: PropTypes.string.isRequired,
+    circuitId: PropTypes.string.isRequired
+  }).isRequired
+};
+
+export default ScheduleRow;

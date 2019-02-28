@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Main from '../main';
@@ -49,6 +50,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  onLoad: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
   onLoad: () => dispatch(fetchData())

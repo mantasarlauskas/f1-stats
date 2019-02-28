@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 
-export default ({ Icon, title, text }) => (
+const MainInfoSection = ({ Icon, title, text }) => (
   <div className={'main-info-section'}>
     <Icon className={'main-info-section__icon'} />
     <h3 className={'main-info-section__title'}>
@@ -12,3 +13,11 @@ export default ({ Icon, title, text }) => (
     </p>
   </div>
 );
+
+MainInfoSection.propTypes = {
+  Icon: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+};
+
+export default MainInfoSection;

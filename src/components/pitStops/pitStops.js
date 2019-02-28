@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import PitStopRow from '../pitStopRow';
 
-export default ({ results }) => (
+const PitStops = ({ results }) => (
   <Fragment>
     <div className={'title'}>
       Pit Stops
@@ -22,3 +23,9 @@ export default ({ results }) => (
     </table>
   </Fragment>
 );
+
+PitStops.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
+export default PitStops;
