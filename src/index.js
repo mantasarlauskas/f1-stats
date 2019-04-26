@@ -7,6 +7,9 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import App from './components/app';
 import ScrollToTop from './components/scrollToTop/scrollToTop';
+import loadImages from './imageLoader';
+
+loadImages();
 
 const middleware = [thunk];
 

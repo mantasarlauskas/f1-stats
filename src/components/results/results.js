@@ -15,7 +15,11 @@ class Results extends Component {
 
   fetchData = async () => {
     const {
-      data: { MRData: { RaceTable: { Races } } }
+      data: {
+        MRData: {
+          RaceTable: { Races }
+        }
+      }
     } = await axios('https://ergast.com/api/f1/2018.json');
     this.setRaces(Races);
   };
@@ -28,15 +32,14 @@ class Results extends Component {
   };
 
   redirectToPage = (round) => {
-    const { history: { push } } = this.props;
+    const {
+      history: { push }
+    } = this.props;
     push(`/results/${round}/race`);
   };
 
   renderRow = ({
-    round,
-    raceName,
-    date,
-    Circuit: { circuitName }
+    round, raceName, date, Circuit: { circuitName }
   }) => (
     <tr
       onClick={() => this.redirectToPage(round)}
@@ -55,9 +58,7 @@ class Results extends Component {
     if (!isLoading) {
       return (
         <Fragment>
-          <div className={'title'}>
-            2018 Race results
-          </div>
+          <div className={'title'}>2018 Race results</div>
           <table className={'table'}>
             <tbody>
               <tr>
