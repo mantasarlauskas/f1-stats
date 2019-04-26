@@ -5,15 +5,8 @@ import './styles.scss';
 
 const Loading = ({ size }) => (
   <div className={'loading'}>
-    <ClipLoader
-      sizeUnit={'px'}
-      size={size}
-      color={'red'}
-      loading
-    />
-    <div className={'loading__text'}>
-      Waiting...
-    </div>
+    <ClipLoader sizeUnit={'px'} size={size} color={'red'} loading />
+    <div className={'loading__text'}>Waiting...</div>
   </div>
 );
 

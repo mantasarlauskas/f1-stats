@@ -9,12 +9,11 @@ const Drivers = ({ isLoading, drivers }) => {
   if (!isLoading) {
     return (
       <Fragment>
-        <div className={'title'}>
-          Drivers
-        </div>
+        <div className={'title'}>Drivers</div>
         <div className={'drivers'}>
           {drivers.map(driver => (
-            <DriverListRow key={driver.driverId} {...driver} />))}
+            <DriverListRow key={driver.driverId} {...driver} />
+          ))}
         </div>
       </Fragment>
     );

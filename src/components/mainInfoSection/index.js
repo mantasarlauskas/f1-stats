@@ -1,1 +1,1 @@
-export default from './mainInfoSection';
+export { default } from './mainInfoSection';

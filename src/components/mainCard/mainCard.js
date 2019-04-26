@@ -5,19 +5,11 @@ import Images from '../../img/images';
 import './styles.scss';
 
 const MainCard = ({
-  constructorId,
-  name,
-  url,
-  title
+  constructorId, name, url, title
 }) => (
   <Link to={`/${url}`} className={'main-card'}>
-    <img
-      src={Images.teams_big[constructorId]}
-      alt={name}
-    />
-    <div className={'main-card__title'}>
-      {title}
-    </div>
+    <img src={Images.teams_big[constructorId]} alt={name} />
+    <div className={'main-card__title'}>{title}</div>
   </Link>
 );
 

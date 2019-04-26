@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-  hideAdditionalMenu,
-  showAdditionalMenu
-} from '../../actions/additionalMenu';
+import { hideAdditionalMenu, showAdditionalMenu } from '../../actions/additionalMenu';
 import AdditionalMenu from '../additionalMenu';
 import './styles.scss';
 
@@ -32,8 +29,7 @@ const MenuItem = ({
     >
       {title}
     </Link>
-    {title === additionalMenu
-      && !isLoading && <AdditionalMenu title={additionalMenu} />}
+    {title === additionalMenu && !isLoading && <AdditionalMenu title={additionalMenu} />}
   </div>
 );
 
@@ -58,4 +54,7 @@ const mapDispatchToProps = dispatch => ({
   onItemLeave: () => dispatch(hideAdditionalMenu())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuItem);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuItem);

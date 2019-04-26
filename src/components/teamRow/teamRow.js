@@ -5,11 +5,7 @@ import { teamSelector } from '../../selectors/api';
 import StandingsRow from '../standingsRow';
 
 const TeamRow = ({ team, ...data }) => (
-  <StandingsRow
-    isDriver={false}
-    team={team}
-    {...data}
-  />
+  <StandingsRow isDriver={false} team={team} {...data} />
 );
 
 TeamRow.propTypes = {

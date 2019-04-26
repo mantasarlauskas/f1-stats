@@ -1,1 +1,1 @@
-export default from './teamCard';
+export { default } from './teamCard';

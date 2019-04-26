@@ -13,23 +13,17 @@ import './styles.scss';
 class Driver extends Component {
   renderInfo = (title, value) => (
     <Fragment>
-      <div className={'driver__info__title'}>
-        {title}
-      </div>
-      <div className={'driver__info__value'}>
-        {value}
-      </div>
+      <div className={'driver__info__title'}>{title}</div>
+      <div className={'driver__info__value'}>{value}</div>
     </Fragment>
   );
 
   render() {
     const {
-      driver,
-      driverStandings,
-      team,
-      isLoading
+      driver, driverStandings, team, isLoading
     } = this.props;
-    if (Object.entries(driver).length !== 0
+    if (
+      Object.entries(driver).length !== 0
       && Object.entries(driverStandings).length !== 0
       && Object.entries(team).length !== 0
     ) {
@@ -47,10 +41,7 @@ class Driver extends Component {
         <div className={'container'}>
           <div className={'driver'}>
             <div className={'driver__image'}>
-              <img
-                src={Images.drivers[driverId]}
-                alt={driverId}
-              />
+              <img src={Images.drivers[driverId]} alt={driverId} />
             </div>
             <div className={'driver__section'}>
               <div className={'driver__name'}>
@@ -72,10 +63,10 @@ class Driver extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading size={100} /> : (
-          <div className={'empty'}>
-            Driver does not exist
-          </div>
+        {isLoading ? (
+          <Loading size={100} />
+        ) : (
+          <div className={'empty'}>Driver does not exist</div>
         )}
       </div>
     );
@@ -89,8 +80,14 @@ Driver.propTypes = {
   isLoading: PropTypes.bool.isRequired
 };
 
-
-const mapDispatchToProps = (state, { match: { params: { id } } }) => ({
+const mapDispatchToProps = (
+  state,
+  {
+    match: {
+      params: { id }
+    }
+  }
+) => ({
   driver: driverSelector(state, id),
   driverStandings: driverStandingsSelector(state, id),
   team: driverTeamSelector(state, id),

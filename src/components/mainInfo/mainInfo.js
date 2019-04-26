@@ -8,7 +8,8 @@ const sections = [
   {
     icon: FaFlagCheckered,
     title: 'Results',
-    text: 'Race, qualifying results and pit stop'
+    text:
+      'Race, qualifying results and pit stop'
       + 'times from every race in the calendar'
   },
   {
@@ -26,6 +27,7 @@ const sections = [
 export default () => (
   <div className={'main-info'}>
     {sections.map(({ icon, title, text }) => (
-      <MainInfoSection key={title} Icon={icon} title={title} text={text} />))}
+      <MainInfoSection key={title} Icon={icon} title={title} text={text} />
+    ))}
   </div>
 );

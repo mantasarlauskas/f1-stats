@@ -1,1 +1,1 @@
-export default from './scrollToTop';
+export { default } from './scrollToTop';

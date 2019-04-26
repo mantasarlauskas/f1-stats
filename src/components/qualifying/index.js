@@ -1,1 +1,1 @@
-export default from './qualifying';
+export { default } from './qualifying';

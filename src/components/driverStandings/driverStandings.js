@@ -8,12 +8,11 @@ const DriverStandings = ({ driverStandings, isLoading }) => {
   if (!isLoading) {
     return (
       <Fragment>
-        <div className={'title'}>
-          2018 drivers championship
-        </div>
+        <div className={'title'}>2018 drivers championship</div>
         <div className={'standings'}>
           {driverStandings.map(driver => (
-            <DriverRow key={driver.driverId} {...driver} />))}
+            <DriverRow key={driver.driverId} {...driver} />
+          ))}
         </div>
       </Fragment>
     );

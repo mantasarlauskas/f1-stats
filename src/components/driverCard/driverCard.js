@@ -20,9 +20,7 @@ const DriverCard = ({
   >
     <span className={`driver-card__team background-color-${constructorId}`} />
     {givenName}
-    <span className={'driver-card__lastname'}>
-      {familyName}
-    </span>
+    <span className={'driver-card__lastname'}>{familyName}</span>
   </Link>
 );
 
@@ -44,4 +42,7 @@ const mapDispatchToProps = dispatch => ({
   onRouteChange: () => dispatch(hideAdditionalMenu())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DriverCard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DriverCard);

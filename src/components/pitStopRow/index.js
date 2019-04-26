@@ -1,1 +1,1 @@
-export default from './pitStopRow';
+export { default } from './pitStopRow';

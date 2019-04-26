@@ -9,11 +9,11 @@ const Teams = ({ teams, isLoading }) => {
   if (!isLoading) {
     return (
       <Fragment>
-        <div className={'title'}>
-          Teams
-        </div>
+        <div className={'title'}>Teams</div>
         <div className={'teams'}>
-          {teams.map(row => <TeamListRow key={row.constructorId} {...row} />)}
+          {teams.map(row => (
+            <TeamListRow key={row.constructorId} {...row} />
+          ))}
         </div>
       </Fragment>
     );

@@ -15,7 +15,11 @@ class Schedule extends Component {
 
   fetchData = async () => {
     const {
-      data: { MRData: { RaceTable: { Races } } }
+      data: {
+        MRData: {
+          RaceTable: { Races }
+        }
+      }
     } = await axios('https://ergast.com/api/f1/2019.json');
     this.setRaces(Races);
   };
@@ -32,9 +36,7 @@ class Schedule extends Component {
     if (!isLoading) {
       return (
         <Fragment>
-          <div className={'title'}>
-            2019 Race Schedule
-          </div>
+          <div className={'title'}>2019 Race Schedule</div>
           <table className={'table'}>
             <tbody>
               <tr>
@@ -44,7 +46,9 @@ class Schedule extends Component {
                 <th className={'xs-hide'}>Layout</th>
                 <th>Date</th>
               </tr>
-              {races.map(race => <ScheduleRow key={race.round} {...race} />)}
+              {races.map(race => (
+                <ScheduleRow key={race.round} {...race} />
+              ))}
             </tbody>
           </table>
         </Fragment>

@@ -52,10 +52,12 @@ const MainCards = ({ teams, isLoading }) => {
 };
 
 MainCards.propTypes = {
-  teams: PropTypes.arrayOf(PropTypes.shape({
-    constructorId: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  })).isRequired,
+  teams: PropTypes.arrayOf(
+    PropTypes.shape({
+      constructorId: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ).isRequired,
   isLoading: PropTypes.bool.isRequired
 };
 

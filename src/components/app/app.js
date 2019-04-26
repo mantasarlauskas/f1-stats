@@ -59,4 +59,9 @@ const mapDispatchToProps = dispatch => ({
   onLoad: () => dispatch(fetchData())
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);

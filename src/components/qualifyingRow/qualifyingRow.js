@@ -7,7 +7,9 @@ const QualifyingRow = ({
   number,
   Driver: { givenName, familyName },
   Constructor: { name, constructorId },
-  Q1, Q2, Q3
+  Q1,
+  Q2,
+  Q3
 }) => (
   <tr key={position} className={'table__row'}>
     <td>{position}</td>

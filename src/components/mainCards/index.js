@@ -1,1 +1,1 @@
-export default from './mainCards';
+export { default } from './mainCards';

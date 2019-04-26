@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import ResultsMenuItem from '../resultsMenuItem';
 import './styles.scss';
 
-const menuItems = [
-  'Race',
-  'Qualifying',
-  'Pit Stops'
-];
+const menuItems = ['Race', 'Qualifying', 'Pit Stops'];
 
 const ResultsMenu = ({ id, url }) => (
   <div className={'results-menu'}>
     {menuItems.map(item => (
-      <ResultsMenuItem key={item} id={id} url={url} item={item} />))}
+      <ResultsMenuItem key={item} id={id} url={url} item={item} />
+    ))}
   </div>
 );
 

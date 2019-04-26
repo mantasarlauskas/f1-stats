@@ -4,9 +4,7 @@ import PitStopRow from '../pitStopRow';
 
 const PitStops = ({ results }) => (
   <Fragment>
-    <div className={'title'}>
-      Pit Stops
-    </div>
+    <div className={'title'}>Pit Stops</div>
     <table className={'table'}>
       <tbody>
         <tr>
@@ -18,7 +16,8 @@ const PitStops = ({ results }) => (
           <th>Duration</th>
         </tr>
         {results.map((pitStop, index) => (
-          <PitStopRow key={index} {...pitStop} />))}
+          <PitStopRow key={index} {...pitStop} />
+        ))}
       </tbody>
     </table>
   </Fragment>

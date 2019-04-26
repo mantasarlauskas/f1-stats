@@ -6,14 +6,9 @@ import Images from '../../img/images';
 import Loading from '../loading';
 
 const PitStopRow = ({
-  driver,
-  team,
-  stop,
-  lap,
-  duration
+  driver, team, stop, lap, duration
 }) => {
-  if (Object.entries(team).length !== 0
-    && Object.entries(driver).length !== 0) {
+  if (Object.entries(team).length !== 0 && Object.entries(driver).length !== 0) {
     const { givenName, familyName } = driver;
     const { constructorId, name } = team;
     return (

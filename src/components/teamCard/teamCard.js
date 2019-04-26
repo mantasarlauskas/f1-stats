@@ -12,13 +12,9 @@ const TeamCard = ({ name, constructorId, onRouteChange }) => (
     to={`/team/${constructorId}`}
     className={`team-card border-color-${constructorId}`}
   >
-    <div className={'team-card__title'}>
-      {name}
-    </div>
+    <div className={'team-card__title'}>{name}</div>
     <div className={'team-card__logo'}>
-      <span className={'team-card__logo__color'
-        + `background-color-${constructorId}`}
-      />
+      <span className={`team-card__logo__color background-color-${constructorId}`} />
       <img src={Images.teams[constructorId]} alt={name} />
     </div>
   </Link>
@@ -34,4 +30,7 @@ const mapDispatchToProps = dispatch => ({
   onRouteChange: () => dispatch(hideAdditionalMenu())
 });
 
-export default connect(null, mapDispatchToProps)(TeamCard);
+export default connect(
+  null,
+  mapDispatchToProps
+)(TeamCard);

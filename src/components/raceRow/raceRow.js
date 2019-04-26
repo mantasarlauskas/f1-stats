@@ -41,7 +41,7 @@ RaceRow.propTypes = {
   }),
   Driver: PropTypes.shape({
     givenName: PropTypes.string.isRequired,
-    familyName: PropTypes.string.isRequired,
+    familyName: PropTypes.string.isRequired
   }).isRequired,
   Constructor: PropTypes.shape({
     name: PropTypes.string.isRequired,

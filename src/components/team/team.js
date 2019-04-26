@@ -14,33 +14,27 @@ import './styles.scss';
 class Team extends Component {
   renderStats = (title, value) => (
     <Fragment>
-      <div className={'team__stats__title'}>
-        {title}
-      </div>
-      <div className={'team__stats__value'}>
-        {value}
-      </div>
+      <div className={'team__stats__title'}>{title}</div>
+      <div className={'team__stats__value'}>{value}</div>
     </Fragment>
   );
 
   render() {
     const {
-      team,
-      teamStandings,
-      isLoading,
-      drivers
+      team, teamStandings, isLoading, drivers
     } = this.props;
-    if (Object.entries(team).length !== 0
-      && Object.entries(teamStandings).length !== 0 && drivers.length > 0) {
+    if (
+      Object.entries(team).length !== 0
+      && Object.entries(teamStandings).length !== 0
+      && drivers.length > 0
+    ) {
       const { constructorId, name, nationality } = team;
       const { points, position, wins } = teamStandings;
       return (
         <div className={'container'}>
           <div className={'team'}>
             <div className={'team__info'}>
-              <div className={'team__name'}>
-                {name}
-              </div>
+              <div className={'team__name'}>{name}</div>
               {drivers.map(({ givenName, familyName, driverId }) => (
                 <div key={driverId} className={'team__driver'}>
                   <GiFullMotorcycleHelmet />
@@ -58,10 +52,7 @@ class Team extends Component {
             </div>
             <div className={`team__color background-color-${constructorId}`} />
             <div className={'team__image'}>
-              <img
-                src={Images.teams_big[constructorId]}
-                alt={name}
-              />
+              <img src={Images.teams_big[constructorId]} alt={name} />
             </div>
           </div>
         </div>
@@ -69,10 +60,10 @@ class Team extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading size={100} /> : (
-          <div className={'empty'}>
-            Team does not exist
-          </div>
+        {isLoading ? (
+          <Loading size={100} />
+        ) : (
+          <div className={'empty'}>Team does not exist</div>
         )}
       </div>
     );
@@ -86,7 +77,14 @@ Team.propTypes = {
   isLoading: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = (state, { match: { params: { id } } }) => ({
+const mapStateToProps = (
+  state,
+  {
+    match: {
+      params: { id }
+    }
+  }
+) => ({
   team: teamSelector(state, id),
   teamStandings: teamStandingsSelector(state, id),
   drivers: teamDriversSelector(state, id),

@@ -8,12 +8,11 @@ const TeamStandings = ({ teamStandings, isLoading }) => {
   if (!isLoading) {
     return (
       <Fragment>
-        <div className={'title'}>
-          2018 teams championship
-        </div>
+        <div className={'title'}>2018 teams championship</div>
         <div className={'standings'}>
           {teamStandings.map(team => (
-            <TeamRow key={team.constructorId} {...team} />))}
+            <TeamRow key={team.constructorId} {...team} />
+          ))}
         </div>
       </Fragment>
     );

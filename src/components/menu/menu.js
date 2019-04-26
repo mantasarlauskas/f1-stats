@@ -39,7 +39,8 @@ const menuItems = [
 const Menu = ({ onClose }) => (
   <nav className={'menu'}>
     {menuItems.map(item => (
-      <MenuItem onClose={onClose} key={item.title} {...item} />))}
+      <MenuItem onClose={onClose} key={item.title} {...item} />
+    ))}
   </nav>
 );
 

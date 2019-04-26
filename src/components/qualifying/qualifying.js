@@ -4,9 +4,7 @@ import QualifyingRow from '../qualifyingRow';
 
 const Qualifying = ({ results }) => (
   <Fragment>
-    <div className={'title'}>
-      Qualifying
-    </div>
+    <div className={'title'}>Qualifying</div>
     <div className={'responsive-table'}>
       <table className={'table'}>
         <tbody>
@@ -21,7 +19,8 @@ const Qualifying = ({ results }) => (
             <th>Q3</th>
           </tr>
           {results.map(row => (
-            <QualifyingRow key={row.Driver.driverId} {...row} />))}
+            <QualifyingRow key={row.Driver.driverId} {...row} />
+          ))}
         </tbody>
       </table>
     </div>

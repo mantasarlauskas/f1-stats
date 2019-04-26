@@ -32,5 +32,4 @@ const mapStateToProps = (state, { driverId }) => ({
   team: driverTeamSelector(state, driverId)
 });
 
-
 export default connect(mapStateToProps)(DriverListRow);

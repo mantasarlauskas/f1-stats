@@ -9,6 +9,8 @@ import Race from '../race';
 import Loading from '../loading';
 import NoMatch from '../noMatch';
 
+const apiURL = 'https://ergast.com/api/f1/2018';
+
 class RaceResults extends Component {
   constructor(props) {
     super(props);
@@ -22,22 +24,32 @@ class RaceResults extends Component {
   }
 
   fetchData = async () => {
-    const { match: { params: { id } } } = this.props;
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
     const {
       data: {
-        MRData: { RaceTable: { Races: RaceStats } }
+        MRData: {
+          RaceTable: { Races: RaceStats }
+        }
       }
-    } = await axios(`https://ergast.com/api/f1/2018/${id}/results.json`);
+    } = await axios(`${apiURL}/${id}/results.json`);
     const {
       data: {
-        MRData: { RaceTable: { Races: QualifyingStats } }
+        MRData: {
+          RaceTable: { Races: QualifyingStats }
+        }
       }
-    } = await axios(`https://ergast.com/api/f1/2018/${id}/qualifying.json`);
+    } = await axios(`${apiURL}/${id}/qualifying.json`);
     const {
       data: {
-        MRData: { RaceTable: { Races: PitStopStats } }
+        MRData: {
+          RaceTable: { Races: PitStopStats }
+        }
       }
-    } = await axios(`https://ergast.com/api/f1/2018/${id}/pitstops.json`);
+    } = await axios(`${apiURL}/${id}/pitstops.json`);
     this.parseData(RaceStats, QualifyingStats, PitStopStats);
   };
 
@@ -60,27 +72,21 @@ class RaceResults extends Component {
 
   render() {
     const {
-      match: { params: { id }, url },
+      match: {
+        params: { id },
+        url
+      },
       location: { pathname }
     } = this.props;
     const {
-      race,
-      qualifying,
-      pitStops,
-      isLoading
+      race, qualifying, pitStops, isLoading
     } = this.state;
     if (race.length > 0 && qualifying.length > 0 && pitStops.length > 0) {
       return (
         <Fragment>
-          <div className={'title title--main'}>
-            {`2018 Round ${id} results`}
-          </div>
+          <div className={'title title--main'}>{`2018 Round ${id} results`}</div>
           <Switch>
-            <Route
-              exact
-              path={`${url}/race`}
-              component={() => <Race results={race} />}
-            />
+            <Route exact path={`${url}/race`} component={() => <Race results={race} />} />
             <Route
               path={`${url}/qualifying`}
               component={() => <Qualifying results={qualifying} />}
@@ -97,10 +103,10 @@ class RaceResults extends Component {
     }
     return (
       <div className={'container'}>
-        {isLoading ? <Loading size={100} /> : (
-          <div className={'empty'}>
-            Race does not exist
-          </div>
+        {isLoading ? (
+          <Loading size={100} />
+        ) : (
+          <div className={'empty'}>Race does not exist</div>
         )}
       </div>
     );

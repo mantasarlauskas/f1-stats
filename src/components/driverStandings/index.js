@@ -1,1 +1,1 @@
-export default from './driverStandings';
+export { default } from './driverStandings';
