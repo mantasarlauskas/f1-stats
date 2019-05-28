@@ -33,6 +33,7 @@
     "react/no-array-index-key": "off",
     "global-require": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/forbid-prop-types": "off"
+    "no-nested-ternary": "off",
+    "react/forbid-prop-types": "warn"
   }
 }

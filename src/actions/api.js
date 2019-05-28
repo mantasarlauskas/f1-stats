@@ -1,5 +1,5 @@
-export const toggleLoading = () => ({
-  type: 'TOGGLE_LOADING'
+export const finishLoading = () => ({
+  type: 'FINISH_LOADING'
 });
 
 export const setDrivers = drivers => ({

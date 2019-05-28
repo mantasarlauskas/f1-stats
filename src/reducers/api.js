@@ -3,15 +3,15 @@ const initialState = {
   teams: [],
   driverStandings: [],
   teamStandings: [],
-  isLoading: false
+  isLoading: true
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_LOADING':
+    case 'FINISH_LOADING':
       return {
         ...state,
-        isLoading: !state.isLoading
+        isLoading: false
       };
     case 'SET_DRIVERS':
       return {

@@ -9,25 +9,25 @@ const driversStandingsSelector = ({ api: { driverStandings } }) => driverStandin
 export const driverSelector = createSelector(
   driversSelector,
   idSelector,
-  (drivers, id) => drivers.find(({ driverId }) => driverId === id) || {}
+  (drivers, id) => drivers.find(({ driverId }) => driverId === id)
 );
 
 export const teamSelector = createSelector(
   teamsSelector,
   idSelector,
-  (teams, id) => teams.find(({ constructorId }) => constructorId === id) || {}
+  (teams, id) => teams.find(({ constructorId }) => constructorId === id)
 );
 
 export const driverStandingsSelector = createSelector(
   driversStandingsSelector,
   idSelector,
-  (standings, id) => standings.find(({ driverId }) => driverId === id) || {}
+  (standings, id) => standings.find(({ driverId }) => driverId === id)
 );
 
 export const teamStandingsSelector = createSelector(
   teamsStandingsSelector,
   idSelector,
-  (standings, id) => standings.find(({ constructorId }) => constructorId === id) || {}
+  (standings, id) => standings.find(({ constructorId }) => constructorId === id)
 );
 
 export const teamDriversSelector = createSelector(
@@ -36,9 +36,7 @@ export const teamDriversSelector = createSelector(
   idSelector,
   (standings, drivers, id) => {
     if (standings.length > 0) {
-      const driverStandings = standings.filter(
-        ({ constructorId }) => constructorId === id
-      );
+      const driverStandings = standings.filter(({ constructorId }) => constructorId === id);
       if (driverStandings.length > 0) {
         const [{ driverId: firstDriver }, { driverId: secondDriver }] = driverStandings;
         return drivers.filter(
@@ -54,7 +52,5 @@ export const teamDriversSelector = createSelector(
 export const driverTeamSelector = createSelector(
   teamsSelector,
   driverStandingsSelector,
-  (teams, standings) => teams.find(
-    ({ constructorId }) => standings && constructorId === standings.constructorId
-  ) || {}
+  (teams, standings) => teams.find(({ constructorId }) => standings && constructorId === standings.constructorId)
 );

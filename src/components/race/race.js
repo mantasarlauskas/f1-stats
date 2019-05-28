@@ -4,9 +4,7 @@ import RaceRow from '../raceRow';
 
 const Race = ({ results }) => (
   <Fragment>
-    <div className={'title'}>
-      Race
-    </div>
+    <div className={'title'}>Race</div>
     <table className={'table'}>
       <tbody>
         <tr>
@@ -22,14 +20,21 @@ const Race = ({ results }) => (
           <th className={'xs-hide'}>Points</th>
         </tr>
         {results.map(row => (
-          <RaceRow key={row.Driver.driverId} {...row} />))}
+          <RaceRow key={row.Driver.driverId} {...row} />
+        ))}
       </tbody>
     </table>
   </Fragment>
 );
 
 Race.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.object).isRequired
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      Driver: PropTypes.shape({
+        driverId: PropTypes.string.isRequired
+      }).isRequired
+    })
+  ).isRequired
 };
 
 export default Race;

@@ -1,1 +1,1 @@
-export { default } from './additionalMenu';
+export { default } from './additionalMenu-container';

@@ -28,7 +28,13 @@ const Qualifying = ({ results }) => (
 );
 
 Qualifying.propTypes = {
-  results: PropTypes.arrayOf(PropTypes.object).isRequired
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      Driver: PropTypes.shape({
+        driverId: PropTypes.string.isRequired
+      }).isRequired
+    })
+  ).isRequired
 };
 
 export default Qualifying;

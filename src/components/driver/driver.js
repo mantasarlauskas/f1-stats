@@ -1,97 +1,33 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import DriverInfo from '../driverInfo';
 import Loading from '../loading';
-import Images from '../../img/images';
-import {
-  driverSelector,
-  driverStandingsSelector,
-  driverTeamSelector
-} from '../../selectors/api';
-import './styles.scss';
 
-class Driver extends Component {
-  renderInfo = (title, value) => (
-    <Fragment>
-      <div className={'driver__info__title'}>{title}</div>
-      <div className={'driver__info__value'}>{value}</div>
-    </Fragment>
-  );
-
-  render() {
-    const {
-      driver, driverStandings, team, isLoading
-    } = this.props;
-    if (
-      Object.entries(driver).length !== 0
-      && Object.entries(driverStandings).length !== 0
-      && Object.entries(team).length !== 0
-    ) {
-      const { position, wins, points } = driverStandings;
-      const { name } = team;
-      const {
-        givenName,
-        familyName,
-        driverId,
-        permanentNumber,
-        dateOfBirth,
-        nationality
-      } = driver;
-      return (
-        <div className={'container'}>
-          <div className={'driver'}>
-            <div className={'driver__image'}>
-              <img src={Images.drivers[driverId]} alt={driverId} />
-            </div>
-            <div className={'driver__section'}>
-              <div className={'driver__name'}>
-                {`${givenName} ${familyName}`}
-              </div>
-              <div className={'driver__info'}>
-                {this.renderInfo('Team', name)}
-                {this.renderInfo('Number', permanentNumber)}
-                {this.renderInfo('Points', points)}
-                {this.renderInfo('Championship position', position)}
-                {this.renderInfo('Wins', wins)}
-                {this.renderInfo('Nationality', nationality)}
-                {this.renderInfo('Date of birth', dateOfBirth)}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className={'container'}>
-        {isLoading ? (
-          <Loading size={100} />
-        ) : (
-          <div className={'empty'}>Driver does not exist</div>
-        )}
-      </div>
-    );
-  }
-}
+const Driver = ({
+  driverStandings, team, driver, isLoading
+}) => (
+  <div className={'container'}>
+    {isLoading ? (
+      <Loading size={100} />
+    ) : driver ? (
+      <DriverInfo {...driverStandings} {...team} {...driver} />
+    ) : (
+      <div className={'empty'}>Driver does not exist</div>
+    )}
+  </div>
+);
 
 Driver.propTypes = {
-  driver: PropTypes.object.isRequired,
-  driverStandings: PropTypes.object.isRequired,
-  team: PropTypes.object.isRequired,
+  driver: PropTypes.object,
+  driverStandings: PropTypes.object,
+  team: PropTypes.object,
   isLoading: PropTypes.bool.isRequired
 };
 
-const mapDispatchToProps = (
-  state,
-  {
-    match: {
-      params: { id }
-    }
-  }
-) => ({
-  driver: driverSelector(state, id),
-  driverStandings: driverStandingsSelector(state, id),
-  team: driverTeamSelector(state, id),
-  isLoading: state.api.isLoading
-});
+Driver.defaultProps = {
+  driver: null,
+  driverStandings: null,
+  team: null
+};
 
-export default connect(mapDispatchToProps)(Driver);
+export default Driver;

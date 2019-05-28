@@ -32,24 +32,21 @@ const cards = [
   }
 ];
 
-const MainCards = ({ teams, isLoading }) => {
-  if (!isLoading && teams.length > 0) {
-    return (
-      <div className={'main-cards'}>
-        {cards.map(({ title, url }, index) => (
-          <MainCard
-            key={title}
-            title={title}
-            url={url}
-            constructorId={teams[index].constructorId}
-            name={teams[index].name}
-          />
-        ))}
-      </div>
-    );
-  }
-  return <Loading size={100} />;
-};
+const MainCards = ({ teams, isLoading }) => (isLoading ? (
+  <Loading size={100} />
+) : (
+  <div className={'main-cards'}>
+    {cards.map(({ title, url }, index) => (
+      <MainCard
+        key={title}
+        title={title}
+        url={url}
+        constructorId={teams[index].constructorId}
+        name={teams[index].name}
+      />
+    ))}
+  </div>
+));
 
 MainCards.propTypes = {
   teams: PropTypes.arrayOf(

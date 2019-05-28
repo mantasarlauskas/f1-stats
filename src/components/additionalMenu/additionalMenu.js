@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DriverCard from '../driverCard';
 import TeamCard from '../teamCard';
@@ -15,13 +14,16 @@ const AdditionalMenu = ({ title, drivers, teams }) => (
 
 AdditionalMenu.propTypes = {
   title: PropTypes.string.isRequired,
-  drivers: PropTypes.arrayOf(PropTypes.object).isRequired,
-  teams: PropTypes.arrayOf(PropTypes.object).isRequired
+  drivers: PropTypes.arrayOf(
+    PropTypes.shape({
+      constructorId: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  teams: PropTypes.arrayOf(
+    PropTypes.shape({
+      driverId: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
-const mapStateToProps = ({ api: { drivers, teams } }) => ({
-  drivers,
-  teams
-});
-
-export default connect(mapStateToProps)(AdditionalMenu);
+export default AdditionalMenu;

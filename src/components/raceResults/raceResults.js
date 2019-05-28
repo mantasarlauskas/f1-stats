@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
@@ -8,114 +9,78 @@ import PitStops from '../pitStops';
 import Race from '../race';
 import Loading from '../loading';
 import NoMatch from '../noMatch';
+import { apiUrl } from '../../thunks/api';
 
-const apiURL = 'https://ergast.com/api/f1/2018';
+const RaceResults = ({
+  match: {
+    params: { id },
+    url
+  },
+  location: { pathname },
+  isMainDataLoading
+}) => {
+  const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-class RaceResults extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      race: [],
-      qualifying: [],
-      pitStops: [],
-      isLoading: true
-    };
-    this.fetchData();
-  }
-
-  fetchData = async () => {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
-    const {
-      data: {
-        MRData: {
-          RaceTable: { Races: RaceStats }
+  const fetchData = async () => {
+    const requests = ['results', 'qualifying', 'pitstops'].map(async (index) => {
+      const {
+        data: {
+          MRData: {
+            RaceTable: { Races }
+          }
         }
-      }
-    } = await axios(`${apiURL}/${id}/results.json`);
-    const {
-      data: {
-        MRData: {
-          RaceTable: { Races: QualifyingStats }
-        }
-      }
-    } = await axios(`${apiURL}/${id}/qualifying.json`);
-    const {
-      data: {
-        MRData: {
-          RaceTable: { Races: PitStopStats }
-        }
-      }
-    } = await axios(`${apiURL}/${id}/pitstops.json`);
-    this.parseData(RaceStats, QualifyingStats, PitStopStats);
-  };
-
-  parseData = (races, qualifying, pitstops) => {
-    this.setData(
-      races.length > 0 ? races[0].Results : races,
-      qualifying.length > 0 ? qualifying[0].QualifyingResults : qualifying,
-      pitstops.length > 0 ? pitstops[0].PitStops : pitstops
-    );
-  };
-
-  setData = (race, qualifying, pitStops) => {
-    this.setState({
-      race,
-      qualifying,
-      pitStops,
-      isLoading: false
+      } = await axios(`${apiUrl}/${id}/${index}.json`);
+      return Races;
     });
+    const apiResults = await Promise.all(requests);
+    setIsLoading(false);
+    if (apiResults[0].length > 0) {
+      setResults(apiResults);
+    }
   };
 
-  render() {
-    const {
-      match: {
-        params: { id },
-        url
-      },
-      location: { pathname }
-    } = this.props;
-    const {
-      race, qualifying, pitStops, isLoading
-    } = this.state;
-    if (race.length > 0 && qualifying.length > 0 && pitStops.length > 0) {
-      return (
-        <Fragment>
-          <div className={'title title--main'}>{`2018 Round ${id} results`}</div>
-          <Switch>
-            <Route exact path={`${url}/race`} component={() => <Race results={race} />} />
-            <Route
-              path={`${url}/qualifying`}
-              component={() => <Qualifying results={qualifying} />}
-            />
-            <Route
-              path={`${url}/pitstops`}
-              component={() => <PitStops results={pitStops} />}
-            />
-            <Route component={NoMatch} />
-          </Switch>
-          <ResultsMenu url={pathname} id={id} />
-        </Fragment>
-      );
-    }
-    return (
-      <div className={'container'}>
-        {isLoading ? (
-          <Loading size={100} />
-        ) : (
-          <div className={'empty'}>Race does not exist</div>
-        )}
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return results.length > 0 ? (
+    <Fragment>
+      <div className={'title title--main'}>{`2018 Round ${id} results`}</div>
+      <Switch>
+        <Route
+          exact
+          path={`${url}/race`}
+          component={() => <Race results={results[0][0].Results} />}
+        />
+        <Route
+          path={`${url}/qualifying`}
+          component={() => <Qualifying results={results[1][0].QualifyingResults} />}
+        />
+        <Route
+          path={`${url}/pitstops`}
+          component={() => (isMainDataLoading ? (
+            <Loading size={60} />
+          ) : (
+            <PitStops results={results[2][0].PitStops} />
+          ))
+          }
+        />
+        <Route component={NoMatch} />
+      </Switch>
+      <ResultsMenu url={pathname} id={id} />
+    </Fragment>
+  ) : (
+    <div className={'container'}>
+      {isLoading ? <Loading size={100} /> : <div className={'empty'}>Race does not exist</div>}
+    </div>
+  );
+};
 
 RaceResults.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
-  location: ReactRouterPropTypes.location.isRequired
+  location: ReactRouterPropTypes.location.isRequired,
+  isMainDataLoading: PropTypes.bool.isRequired
 };
 
 export default RaceResults;

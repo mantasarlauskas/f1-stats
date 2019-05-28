@@ -1,1 +1,1 @@
-export { default } from './menuItem';
+export { default } from './menuItem-container';

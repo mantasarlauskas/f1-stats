@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { hideAdditionalMenu, showAdditionalMenu } from '../../actions/additionalMenu';
 import AdditionalMenu from '../additionalMenu';
 import './styles.scss';
 
@@ -10,8 +8,8 @@ const MenuItem = ({
   type,
   title,
   url,
-  onItemHover,
-  onItemLeave,
+  showAdditionalMenu,
+  hideAdditionalMenu,
   additionalMenu,
   isLoading,
   onClose
@@ -19,13 +17,13 @@ const MenuItem = ({
   <div
     key={title}
     className={'menu-item'}
-    onMouseLeave={onItemLeave}
-    onMouseOver={() => !type && !additionalMenu && onItemHover(title)}
+    onMouseLeave={hideAdditionalMenu}
+    onMouseOver={() => !type && !additionalMenu && showAdditionalMenu(title)}
   >
     <Link
       to={`/${url.toLowerCase()}`}
       className={'menu-item__text'}
-      onClick={window.innerWidth > 576 ? onItemLeave : onClose}
+      onClick={window.innerWidth > 576 ? hideAdditionalMenu : onClose}
     >
       {title}
     </Link>
@@ -37,24 +35,11 @@ MenuItem.propTypes = {
   type: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  onItemHover: PropTypes.func.isRequired,
-  onItemLeave: PropTypes.func.isRequired,
+  showAdditionalMenu: PropTypes.func.isRequired,
+  hideAdditionalMenu: PropTypes.func.isRequired,
   additionalMenu: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({ api: { isLoading }, additionalMenu }) => ({
-  isLoading,
-  additionalMenu
-});
-
-const mapDispatchToProps = dispatch => ({
-  onItemHover: item => dispatch(showAdditionalMenu(item)),
-  onItemLeave: () => dispatch(hideAdditionalMenu())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MenuItem);
+export default MenuItem;

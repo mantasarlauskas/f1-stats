@@ -4,8 +4,10 @@ import {
   setTeams,
   setDriverStandings,
   setTeamStandings,
-  toggleLoading
+  finishLoading
 } from '../actions/api';
+
+export const apiUrl = 'https://ergast.com/api/f1/2018';
 
 // eslint-disable-next-line max-len
 const parseDriverStandings = data => data.map(({ Constructors, Driver: { driverId }, ...restData }) => ({
@@ -26,7 +28,7 @@ const getDrivers = () => async (dispatch) => {
         DriverTable: { Drivers }
       }
     }
-  } = await axios('https://ergast.com/api/f1/2018/drivers.json');
+  } = await axios(`${apiUrl}/drivers.json`);
   dispatch(setDrivers(Drivers));
 };
 
@@ -37,7 +39,7 @@ const getTeams = () => async (dispatch) => {
         ConstructorTable: { Constructors }
       }
     }
-  } = await axios('https://ergast.com/api/f1/2018/constructors.json');
+  } = await axios(`${apiUrl}/constructors.json`);
   dispatch(setTeams(Constructors));
 };
 
@@ -48,7 +50,7 @@ const getDriverStandings = () => async (dispatch) => {
         StandingsTable: { StandingsLists }
       }
     }
-  } = await axios('https://ergast.com/api/f1/2018/driverStandings.json');
+  } = await axios(`${apiUrl}/driverStandings.json`);
   dispatch(setDriverStandings(parseDriverStandings(StandingsLists[0].DriverStandings)));
 };
 
@@ -59,15 +61,14 @@ const getTeamStandings = () => async (dispatch) => {
         StandingsTable: { StandingsLists }
       }
     }
-  } = await axios('https://ergast.com/api/f1/2018/constructorStandings.json');
+  } = await axios(`${apiUrl}/constructorStandings.json`);
   dispatch(setTeamStandings(parseTeamStandings(StandingsLists[0].ConstructorStandings)));
 };
 
 export default () => async (dispatch) => {
-  dispatch(toggleLoading());
   await dispatch(getDrivers());
   await dispatch(getTeams());
   await dispatch(getDriverStandings());
   await dispatch(getTeamStandings());
-  dispatch(toggleLoading());
+  dispatch(finishLoading());
 };
