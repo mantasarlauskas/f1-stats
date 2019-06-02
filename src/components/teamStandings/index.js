@@ -1,1 +1,1 @@
-export { default } from './teamStandings';
+export { default } from './teamStandings-container';

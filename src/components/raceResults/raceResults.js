@@ -2,14 +2,13 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import ResultsMenu from '../resultsMenu';
 import Qualifying from '../qualifying';
 import PitStops from '../pitStops';
 import Race from '../race';
 import Loading from '../loading';
 import NoMatch from '../noMatch';
-import { apiUrl } from '../../thunks/api';
+import fetchRaceData from '../../thunks/race';
 
 const RaceResults = ({
   match: {
@@ -23,17 +22,7 @@ const RaceResults = ({
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const requests = ['results', 'qualifying', 'pitstops'].map(async (index) => {
-      const {
-        data: {
-          MRData: {
-            RaceTable: { Races }
-          }
-        }
-      } = await axios(`${apiUrl}/${id}/${index}.json`);
-      return Races;
-    });
-    const apiResults = await Promise.all(requests);
+    const apiResults = await fetchRaceData(id);
     setIsLoading(false);
     if (apiResults[0].length > 0) {
       setResults(apiResults);

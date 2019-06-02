@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import MainCard from '../mainCard';
 import Loading from '../loading';
 import './styles.scss';
@@ -58,9 +57,4 @@ MainCards.propTypes = {
   isLoading: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({ api: { teams, isLoading } }) => ({
-  teams,
-  isLoading
-});
-
-export default connect(mapStateToProps)(MainCards);
+export default MainCards;

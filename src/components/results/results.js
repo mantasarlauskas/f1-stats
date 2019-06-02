@@ -1,88 +1,42 @@
-import React, { Component, Fragment } from 'react';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import axios from 'axios';
+import React, { Fragment, useState, useEffect } from 'react';
+import ResultsRow from '../resultsRow';
 import Loading from '../loading';
+import fetchResults from '../../thunks/races';
 
-class Results extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      races: [],
-      isLoading: true
-    };
-    this.fetchData();
-  }
+export default () => {
+  const [races, setRaces] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  fetchData = async () => {
-    const {
-      data: {
-        MRData: {
-          RaceTable: { Races }
-        }
-      }
-    } = await axios('https://ergast.com/api/f1/2018.json');
-    this.setRaces(Races);
+  const fetchData = async () => {
+    const results = await fetchResults();
+    setRaces(results);
+    setIsLoading(false);
   };
 
-  setRaces = (races) => {
-    this.setState({
-      races,
-      isLoading: false
-    });
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  redirectToPage = (round) => {
-    const {
-      history: { push }
-    } = this.props;
-    push(`/results/${round}/race`);
-  };
-
-  renderRow = ({
-    round, raceName, date, Circuit: { circuitName }
-  }) => (
-    <tr
-      onClick={() => this.redirectToPage(round)}
-      key={round}
-      className={'table__row table__row--clickable'}
-    >
-      <td>{round}</td>
-      <td>{raceName}</td>
-      <td className={'m-hide'}>{circuitName}</td>
-      <td className={'xs-hide'}>{date}</td>
-    </tr>
+  return isLoading ? (
+    <div className={'container'}>
+      <Loading size={100} />
+    </div>
+  ) : (
+    <Fragment>
+      <div className={'title'}>2018 Race results</div>
+      <table className={'table'}>
+        <tbody>
+          <tr>
+            <th>Round</th>
+            <th>Race</th>
+            <th className={'m-hide'}>Circuit</th>
+            <th className={'xs-hide'}>Date</th>
+          </tr>
+          {races.map(race => (
+            <ResultsRow key={race.round} {...race} />
+          ))}
+        </tbody>
+      </table>
+    </Fragment>
   );
-
-  render() {
-    const { races, isLoading } = this.state;
-    if (!isLoading) {
-      return (
-        <Fragment>
-          <div className={'title'}>2018 Race results</div>
-          <table className={'table'}>
-            <tbody>
-              <tr>
-                <th>Round</th>
-                <th>Race</th>
-                <th className={'m-hide'}>Circuit</th>
-                <th className={'xs-hide'}>Date</th>
-              </tr>
-              {races.map(this.renderRow)}
-            </tbody>
-          </table>
-        </Fragment>
-      );
-    }
-    return (
-      <div className={'container'}>
-        <Loading size={100} />
-      </div>
-    );
-  }
-}
-
-Results.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired
 };
-
-export default Results;

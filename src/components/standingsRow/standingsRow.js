@@ -4,12 +4,7 @@ import Images from '../../img/images';
 import './styles.scss';
 
 const StandingsRow = ({
-  driver,
-  team: { name },
-  isDriver,
-  points,
-  position,
-  constructorId
+  driver, team: { name }, isDriver, points, position, constructorId
 }) => (
   <div className={isDriver ? 'standings-row' : 'standings-row standings-row--short'}>
     <div className={'standings-row__number-wrapper'}>
@@ -22,11 +17,7 @@ const StandingsRow = ({
         <span className={'standings-row__name--bold'}>{driver.familyName}</span>
       </div>
     )}
-    <div
-      className={
-        isDriver ? 'xs-hide standings-row__driver-team' : 'standings-row__name--bold'
-      }
-    >
+    <div className={isDriver ? 'xs-hide standings-row__driver-team' : 'standings-row__name--bold'}>
       {name}
     </div>
     <img className={'m-hide'} src={Images.teams[constructorId]} alt={name} />
@@ -35,7 +26,10 @@ const StandingsRow = ({
 );
 
 StandingsRow.propTypes = {
-  driver: PropTypes.object,
+  driver: PropTypes.shape({
+    givenName: PropTypes.string.isRequired,
+    familyName: PropTypes.string.isRequired
+  }),
   team: PropTypes.shape({
     name: PropTypes.string.isRequired
   }).isRequired,
@@ -46,7 +40,7 @@ StandingsRow.propTypes = {
 };
 
 StandingsRow.defaultProps = {
-  driver: {}
+  driver: null
 };
 
 export default StandingsRow;

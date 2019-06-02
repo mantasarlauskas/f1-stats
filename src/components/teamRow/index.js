@@ -1,1 +1,1 @@
-export { default } from './teamRow';
+export { default } from './teamRow-container';
