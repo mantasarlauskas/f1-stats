@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { hideAdditionalMenu } from '../../actions/additionalMenu';
 import Images from '../../img/images';
 import './style.scss';
 
-const TeamCard = ({ name, constructorId, onRouteChange }) => (
+const TeamCard = ({ name, constructorId, hideAdditionalMenu }) => (
   <Link
-    onClick={onRouteChange}
+    onClick={hideAdditionalMenu}
     to={`/team/${constructorId}`}
     className={`team-card border-color-${constructorId}`}
   >
@@ -23,14 +21,7 @@ const TeamCard = ({ name, constructorId, onRouteChange }) => (
 TeamCard.propTypes = {
   name: PropTypes.string.isRequired,
   constructorId: PropTypes.string.isRequired,
-  onRouteChange: PropTypes.func.isRequired
+  hideAdditionalMenu: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  onRouteChange: () => dispatch(hideAdditionalMenu())
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(TeamCard);
+export default TeamCard;

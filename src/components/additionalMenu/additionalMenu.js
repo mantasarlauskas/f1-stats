@@ -16,12 +16,12 @@ AdditionalMenu.propTypes = {
   title: PropTypes.string.isRequired,
   drivers: PropTypes.arrayOf(
     PropTypes.shape({
-      constructorId: PropTypes.string.isRequired
+      driverId: PropTypes.string.isRequired
     })
   ).isRequired,
   teams: PropTypes.arrayOf(
     PropTypes.shape({
-      driverId: PropTypes.string.isRequired
+      constructorId: PropTypes.string.isRequired
     })
   ).isRequired
 };

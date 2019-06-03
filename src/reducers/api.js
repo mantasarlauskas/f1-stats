@@ -1,3 +1,11 @@
+import {
+  FINISH_LOADING,
+  SET_DRIVERS,
+  SET_DRIVER_STANDINGS,
+  SET_TEAMS,
+  SET_TEAM_STANDINGS
+} from '../actions/api';
+
 const initialState = {
   drivers: [],
   teams: [],
@@ -8,27 +16,27 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'FINISH_LOADING':
+    case FINISH_LOADING:
       return {
         ...state,
         isLoading: false
       };
-    case 'SET_DRIVERS':
+    case SET_DRIVERS:
       return {
         ...state,
         drivers: action.payload
       };
-    case 'SET_DRIVER_STANDINGS':
+    case SET_DRIVER_STANDINGS:
       return {
         ...state,
         driverStandings: action.payload
       };
-    case 'SET_TEAMS':
+    case SET_TEAMS:
       return {
         ...state,
         teams: action.payload
       };
-    case 'SET_TEAM_STANDINGS':
+    case SET_TEAM_STANDINGS:
       return {
         ...state,
         teamStandings: action.payload

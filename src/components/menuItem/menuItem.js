@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import AdditionalMenu from '../additionalMenu';
 import './styles.scss';
 
+const mediumSize = 992;
+const smallSize = 576;
+
 const MenuItem = ({
   type,
   title,
@@ -17,13 +20,15 @@ const MenuItem = ({
   <div
     key={title}
     className={'menu-item'}
-    onMouseLeave={hideAdditionalMenu}
-    onMouseOver={() => !type && !additionalMenu && showAdditionalMenu(title)}
+    onMouseLeave={() => window.innerWidth > mediumSize && additionalMenu && hideAdditionalMenu()}
+    onMouseOver={() => (
+      window.innerWidth > mediumSize && !type && !additionalMenu && showAdditionalMenu(title)
+    )}
   >
     <Link
       to={`/${url.toLowerCase()}`}
       className={'menu-item__text'}
-      onClick={window.innerWidth > 576 ? hideAdditionalMenu : onClose}
+      onClick={window.innerWidth > smallSize ? hideAdditionalMenu : onClose}
     >
       {title}
     </Link>
