@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Images from '../../img/images';
 import './styles.scss';
 
 const TeamListRow = ({ constructorId, name }) => (
   <Link to={`/team/${constructorId}`} className={'team-list-row'} key={constructorId}>
     <div className={'team-list-row__title'}>{name}</div>
     <div className={'team-list-row__image'}>
-      <img src={Images.teams[constructorId]} alt={name} />
+      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
     </div>
   </Link>
 );

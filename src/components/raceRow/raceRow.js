@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 
 const RaceRow = ({
   number,
@@ -19,7 +18,7 @@ const RaceRow = ({
     <td>{`${givenName} ${familyName}`}</td>
     <td className={'xs-hide'}>{name}</td>
     <td className={'l-hide'}>
-      <img src={Images.teams[constructorId]} alt={name} />
+      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
     </td>
     <td className={'m-hide'}>{laps}</td>
     <td className={'xs-hide'}>{grid}</td>

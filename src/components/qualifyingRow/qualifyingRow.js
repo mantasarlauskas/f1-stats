@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 
 const QualifyingRow = ({
   position,
@@ -17,7 +16,7 @@ const QualifyingRow = ({
     <td>{`${givenName} ${familyName}`}</td>
     <td>{name}</td>
     <td className={'l-hide'}>
-      <img src={Images.teams[constructorId]} alt={name} />
+      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
     </td>
     <td>{Q1}</td>
     <td>{Q2}</td>

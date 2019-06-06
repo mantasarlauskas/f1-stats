@@ -35,7 +35,7 @@ const RaceResults = ({
 
   return results.length > 0 ? (
     <Fragment>
-      <div className={'title title--main'}>{`2018 Round ${id} results`}</div>
+      <div className={'title title--main'}>{`2019 Round ${id} results`}</div>
       <Switch>
         <Route
           exact

@@ -9,7 +9,7 @@ const TeamStandings = ({ teamStandings, isLoading }) => (isLoading ? (
   </div>
 ) : (
   <Fragment>
-    <div className={'title'}>2018 teams championship</div>
+    <div className={'title'}>2019 teams championship</div>
     <div className={'standings'}>
       {teamStandings.map(team => (
         <TeamRow key={team.constructorId} {...team} />
@@ -19,9 +19,11 @@ const TeamStandings = ({ teamStandings, isLoading }) => (isLoading ? (
 ));
 
 TeamStandings.propTypes = {
-  teamStandings: PropTypes.arrayOf(PropTypes.shape({
-    constructorId: PropTypes.string.isRequired
-  })).isRequired,
+  teamStandings: PropTypes.arrayOf(
+    PropTypes.shape({
+      constructorId: PropTypes.string.isRequired
+    })
+  ).isRequired,
   isLoading: PropTypes.bool.isRequired
 };
 

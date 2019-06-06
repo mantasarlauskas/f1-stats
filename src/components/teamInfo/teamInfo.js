@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { GiFullMotorcycleHelmet } from 'react-icons/gi';
-import Images from '../../img/images';
 import './styles.scss';
 
 const renderStats = (title, value) => (
@@ -32,7 +31,7 @@ const TeamInfo = ({
     </div>
     <div className={`team__color background-color-${constructorId}`} />
     <div className={'team__image'}>
-      <img src={Images.teams_big[constructorId]} alt={name} />
+      <img src={`/src/img/teams_big/${constructorId}.jpg`} alt={name} />
     </div>
   </div>
 );

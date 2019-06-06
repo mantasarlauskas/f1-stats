@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 
 const PitStopRow = ({
   driver: { givenName, familyName },
@@ -13,7 +12,7 @@ const PitStopRow = ({
     <td>{`${givenName} ${familyName}`}</td>
     <td>{name}</td>
     <td className={'l-hide'}>
-      <img src={Images.teams[constructorId]} alt={name} />
+      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
     </td>
     <td className={'xs-hide'}>{stop}</td>
     <td>{lap}</td>

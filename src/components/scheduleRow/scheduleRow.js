@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 
 const ScheduleRow = ({
   round, raceName, date, Circuit: { circuitName, circuitId }
@@ -10,7 +9,7 @@ const ScheduleRow = ({
     <td>{raceName}</td>
     <td className={'m-hide'}>{circuitName}</td>
     <td className={'xs-hide'}>
-      <img className={'circuit'} src={Images.circuits[circuitId]} alt={circuitName} />
+      <img className={'circuit'} src={`/src/img/circuits/${circuitId}.png`} alt={circuitName} />
     </td>
     <td>{date}</td>
   </tr>

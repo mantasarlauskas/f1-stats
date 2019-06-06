@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 import './styles.scss';
 
 const renderInfo = (title, value) => (
@@ -24,7 +23,7 @@ const DriverInfo = ({
 }) => (
   <div className={'driver'}>
     <div className={'driver__image'}>
-      <img src={Images.drivers[driverId]} alt={driverId} />
+      <img src={`/src/img/drivers/${driverId}.jpg`} alt={driverId} />
     </div>
     <div className={'driver__section'}>
       <div className={'driver__name'}>{`${givenName} ${familyName}`}</div>

@@ -7,7 +7,7 @@ import {
   finishLoading
 } from '../actions/api';
 
-export const apiUrl = 'https://ergast.com/api/f1/2018';
+export const apiUrl = 'https://ergast.com/api/f1/2019';
 
 // eslint-disable-next-line max-len
 const parseDriverStandings = data => data.map(({ Constructors, Driver: { driverId }, ...restData }) => ({

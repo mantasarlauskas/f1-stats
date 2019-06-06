@@ -9,7 +9,12 @@ export default () => {
 
   const fetchData = async () => {
     const results = await fetchResults();
-    setRaces(results);
+    const filteredResults = results.filter(({ date }) => {
+      const newDate = new Date(date);
+      newDate.setDate(newDate.getDate() + 1);
+      return new Date() > new Date(newDate);
+    });
+    setRaces(filteredResults);
     setIsLoading(false);
   };
 
@@ -23,7 +28,7 @@ export default () => {
     </div>
   ) : (
     <Fragment>
-      <div className={'title'}>2018 Race results</div>
+      <div className={'title'}>2019 Race results</div>
       <table className={'table'}>
         <tbody>
           <tr>

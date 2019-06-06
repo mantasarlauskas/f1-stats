@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Images from '../../img/images';
 import './styles.scss';
 
 const StandingsRow = ({
@@ -20,7 +19,7 @@ const StandingsRow = ({
     <div className={isDriver ? 'xs-hide standings-row__driver-team' : 'standings-row__name--bold'}>
       {name}
     </div>
-    <img className={'m-hide'} src={Images.teams[constructorId]} alt={name} />
+    <img className={'m-hide'} src={`/src/img/teams/${constructorId}.png`} alt={name} />
     <div className={'standings-row__points'}>{points}</div>
   </div>
 );
