@@ -1,1 +1,1 @@
-export { default } from './teamInfo';
+export { default } from './teamInfo-container';

@@ -6,12 +6,12 @@ import './styles.scss';
 
 const cards = [
   {
-    title: 'Teams',
-    url: 'teams'
+    title: 'Results',
+    url: 'results'
   },
   {
-    title: 'Drivers',
-    url: 'drivers'
+    title: 'Schedule',
+    url: 'schedule'
   },
   {
     title: 'Driver Standings',
@@ -22,30 +22,32 @@ const cards = [
     url: 'team-standings'
   },
   {
-    title: 'Results',
-    url: 'results'
+    title: 'Drivers',
+    url: 'drivers'
   },
   {
-    title: 'Schedule',
-    url: 'schedule'
+    title: 'Teams',
+    url: 'teams'
   }
 ];
 
-const MainCards = ({ teams, isLoading }) => (isLoading ? (
-  <Loading size={100} />
-) : (
+const MainCards = ({ teams, isLoading }) => (
   <div className={'main-cards'}>
-    {cards.map(({ title, url }, index) => (
-      <MainCard
-        key={title}
-        title={title}
-        url={url}
-        constructorId={teams[index].constructorId}
-        name={teams[index].name}
-      />
-    ))}
+    {isLoading ? (
+      <Loading size={100} />
+    ) : (
+      cards.map(({ title, url }, index) => (
+        <MainCard
+          key={title}
+          title={title}
+          url={url}
+          constructorId={teams[index].constructorId}
+          name={teams[index].name}
+        />
+      ))
+    )}
   </div>
-));
+);
 
 MainCards.propTypes = {
   teams: PropTypes.arrayOf(

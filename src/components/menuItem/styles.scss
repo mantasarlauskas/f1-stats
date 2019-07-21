@@ -1,3 +1,6 @@
+@import '../../styles/_breakpoints.scss';
+@import '../../styles/_palette.scss';
+
 .menu-item {
   display: inline-block;
   color: #fff;
@@ -5,19 +8,22 @@
   height: 100px;
   line-height: 100px;
 
-  @media (max-width: 992px) {
-    height: 50px;
-    line-height: 50px;
+  &:hover {
+    background-color: $secondary-color;
+  }
+
+  @media (max-width: $l) {
+    $border-props: 1px #eee7e1 solid;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
     padding: 0 10px;
-  }
-
-  @media (max-width: 576px) {
     width: 100%;
-  }
+    border-top: $border-props;
 
-  &:hover {
-    background-color: rgb(21, 21, 30);
+    &:last-child {
+      border-bottom: $border-props;
+    }
   }
 }
 

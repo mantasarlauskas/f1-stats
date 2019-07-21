@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { photoUrl } from '../../services/api';
 import './styles.scss';
 
 const renderInfo = (title, value) => (
-  <Fragment>
-    <div className={'driver__info__title'}>{title}</div>
-    <div className={'driver__info__value'}>{value}</div>
-  </Fragment>
+  <div className={'driver__info__row'}>
+    <b>{`${title}:`}</b>
+    &nbsp;
+    {value}
+  </div>
 );
 
 const DriverInfo = ({
@@ -19,22 +21,38 @@ const DriverInfo = ({
   driverId,
   permanentNumber,
   dateOfBirth,
-  nationality
+  nationality,
+  isFavourite,
+  addFavouriteDriver,
+  removeFavouriteDriver,
+  team: { constructorId }
 }) => (
   <div className={'driver'}>
-    <div className={'driver__image'}>
-      <img src={`/src/img/drivers/${driverId}.jpg`} alt={driverId} />
-    </div>
+    <img className={'driver__image'} src={`${photoUrl}/drivers/${driverId}.jpg`} alt={driverId} />
+    <span className={`driver__color background-color-${constructorId}`} />
     <div className={'driver__section'}>
-      <div className={'driver__name'}>{`${givenName} ${familyName}`}</div>
-      <div className={'driver__info'}>
-        {renderInfo('Team', name)}
-        {renderInfo('Number', permanentNumber)}
-        {renderInfo('Points', points)}
-        {renderInfo('Championship position', position)}
-        {renderInfo('Wins', wins)}
-        {renderInfo('Nationality', nationality)}
-        {renderInfo('Date of birth', dateOfBirth)}
+      <div className={'driver__section__content'}>
+        <div className={'driver__name'}>{`${givenName} ${familyName}`}</div>
+        <div className={'driver__info'}>
+          {renderInfo('Team', name)}
+          {renderInfo('Number', permanentNumber)}
+          {renderInfo('Points', points)}
+          {renderInfo('Championship position', position)}
+          {renderInfo('Wins this season', wins)}
+          {renderInfo('Nationality', nationality)}
+          {renderInfo('Date of birth', dateOfBirth)}
+        </div>
+        <button
+          className={`favourite-button ${isFavourite ? 'favourite-button--remove' : ''}`}
+          onClick={
+            !isFavourite
+              ? () => addFavouriteDriver(driverId)
+              : () => removeFavouriteDriver(driverId)
+          }
+          type={'button'}
+        >
+          {!isFavourite ? 'Add to favourites' : 'Remove from favourites'}
+        </button>
       </div>
     </div>
   </div>
@@ -50,7 +68,13 @@ DriverInfo.propTypes = {
   driverId: PropTypes.string.isRequired,
   permanentNumber: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.string.isRequired,
-  nationality: PropTypes.string.isRequired
+  nationality: PropTypes.string.isRequired,
+  isFavourite: PropTypes.bool.isRequired,
+  addFavouriteDriver: PropTypes.func.isRequired,
+  removeFavouriteDriver: PropTypes.func.isRequired,
+  team: PropTypes.shape({
+    constructorId: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default DriverInfo;

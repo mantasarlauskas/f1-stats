@@ -11,6 +11,8 @@
   img {
     width: 100%;
     filter: brightness(60%);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 
     &:hover {
       filter: brightness(100%);

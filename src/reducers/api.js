@@ -4,7 +4,7 @@ import {
   SET_DRIVER_STANDINGS,
   SET_TEAMS,
   SET_TEAM_STANDINGS
-} from '../actions/api';
+} from '../actions/stats';
 
 const initialState = {
   drivers: [],

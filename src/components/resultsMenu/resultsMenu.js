@@ -5,17 +5,16 @@ import './styles.scss';
 
 const menuItems = ['Race', 'Qualifying', 'Pit Stops'];
 
-const ResultsMenu = ({ id, url }) => (
+const ResultsMenu = ({ id }) => (
   <div className={'results-menu'}>
     {menuItems.map(item => (
-      <ResultsMenuItem key={item} id={id} url={url} item={item} />
+      <ResultsMenuItem key={item} id={id} item={item} />
     ))}
   </div>
 );
 
 ResultsMenu.propTypes = {
-  id: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 };
 
 export default ResultsMenu;

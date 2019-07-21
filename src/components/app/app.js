@@ -14,6 +14,7 @@ import Schedule from '../schedule';
 import Teams from '../teams';
 import Drivers from '../drivers';
 import NoMatch from '../noMatch';
+import Favourites from '../favourites';
 import './styles.scss';
 
 const App = ({ fetchData }) => {
@@ -37,6 +38,7 @@ const App = ({ fetchData }) => {
             <Route path={'/schedule'} component={Schedule} />
             <Route path={'/teams'} component={Teams} />
             <Route path={'/drivers'} component={Drivers} />
+            <Route path={'/favourites'} component={Favourites} />
             <Route component={NoMatch} />
           </Switch>
         </div>

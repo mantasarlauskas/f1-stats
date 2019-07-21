@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import 'breakpoints';
+@import 'helpers';
+@import 'palette';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Titillium Web', sans-serif;
+  box-sizing: border-box;
+}
+
+.favourite-button {
+  margin: 0 auto;
+  min-height: 50px;
+  width: 75%;
+  display: block;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: $main-color;
+  color: #FFF;
+  cursor: pointer;
+  max-width: 320px;
+  transition: background-color 0.5s ease;
+  outline: none;
+
+  &:hover {
+    background-color: darken($main-color, 10%);
+  }
+
+  @media (max-width: $l) {
+    font-size: 18px;
+    padding: 5px 0;
+    max-width: 260px;
+    line-height: 22px;
+  }
+}
+
+.favourite-button--remove {
+  $color: rgb(30, 30, 30);
+  background-color: $color;
+
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+.circuit {
+  width: 80px;
+}
+
+.responsive-table {
+  overflow-x: auto;
+
+  @media (max-width: $xs) {
+    margin: 0 5%;
+
+    .table {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+.table {
+  $border-props: 1px #eee7e1 solid;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 5px;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+
+  th {
+    padding: 10px 5px;
+  }
+
+  tr {
+    border: $border-props;
+  }
+
+  .spacer {
+    height: 1px;
+  }
+}
+
+.table__row {
+  height: 50px;
+  text-align: center;
+  border: 2px transparent solid;
+
+  @media (max-width: $l) {
+    color: $secondary-color;
+  }
+
+  &:hover {
+    background-color: darken(#fff, 10%);
+  }
+
+  td {
+    padding: 5px;
+  }
+}
+
+.table__row--clickable {
+  td {
+    cursor: pointer;
+  }
+}
+
+.empty {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.title {
+  text-align: center;
+  border-color: gray;
+  padding: 30px 0;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.title--main {
+  border-color: black;
+  font-weight: bold;
+  padding-bottom: 0;
+}
+
+.standings {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container {
+  padding-top: 70px;
+
+  @media (max-width: $m) {
+    padding-top: 40px;
+  }
+
+  @media (max-width: $xs) {
+    padding-top: 20px;
+  }
+}

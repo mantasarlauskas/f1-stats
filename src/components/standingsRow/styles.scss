@@ -1,20 +1,27 @@
+@import '../../styles/_breakpoints.scss';
+@import '../../styles/_palette.scss';
+
 .standings-row {
   display: grid;
   grid-template-columns: 80px 1fr 1fr 1fr 80px;
   height: 60px;
   justify-items: center;
   align-items: center;
-  border: 1px gray solid;
+  border: 2px gray solid;
   border-top: none;
   border-left: none;
   border-bottom-right-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
 
-  @media (max-width: 992px) {
+  @media (max-width: $m) {
     grid-template-columns: 60px 1fr 1fr 60px;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: $xs) {
     grid-template-columns: 50px 1fr 50px;
   }
 }
@@ -22,7 +29,7 @@
 .standings-row--short {
   grid-template-columns: 160px 1fr 1fr 80px;
 
-  @media (max-width: 992px) {
+  @media (max-width: $m) {
     grid-template-columns: 60px 1fr 60px;
   }
 }

@@ -4,7 +4,7 @@ import DriverListRow from '../driverListRow';
 import Loading from '../loading';
 import './styles.scss';
 
-const Drivers = ({ isLoading, drivers }) => (isLoading ? (
+const Drivers = ({ isLoading, drivers }) => isLoading ? (
   <div className={'container'}>
     <Loading size={100} />
   </div>
@@ -17,7 +17,7 @@ const Drivers = ({ isLoading, drivers }) => (isLoading ? (
       ))}
     </div>
   </Fragment>
-));
+);
 
 Drivers.propTypes = {
   isLoading: PropTypes.bool.isRequired,

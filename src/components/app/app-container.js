@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import fetchData from '../../thunks/api';
+import fetchData from '../../actions/stats';
 import App from './app';
 
 const mapDispatchToProps = {

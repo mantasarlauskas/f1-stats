@@ -1,3 +1,6 @@
+@import '../../styles/_palette.scss';
+@import '../../styles/_breakpoints.scss';
+
 .additional-menu {
   position: fixed;
   display: grid;
@@ -8,14 +11,14 @@
   left: 0;
   width: 100%;
   line-height: 20px;
-  z-index: 1;
+  z-index: 99;
   min-height: 400px;
   padding: 50px 5%;
-  background-color: rgb(21, 21, 30);
+  background-color: $secondary-color;
   color: #fff;
   cursor: default;
 
-  @media (max-width: 992px) {
+  @media (max-width: $l) {
     display: none;
   }
 }

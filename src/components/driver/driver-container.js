@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { driverSelector, driverStandingsSelector, driverTeamSelector } from '../../selectors/api';
 import Driver from './driver';
 
-const mapDispatchToProps = (
+const mapStateToProps = (
   state,
   {
     match: {
@@ -13,7 +13,8 @@ const mapDispatchToProps = (
   driver: driverSelector(state, id),
   driverStandings: driverStandingsSelector(state, id),
   team: driverTeamSelector(state, id),
-  isLoading: state.api.isLoading
+  isLoading: state.api.isLoading,
+  id
 });
 
-export default connect(mapDispatchToProps)(Driver);
+export default connect(mapStateToProps)(Driver);

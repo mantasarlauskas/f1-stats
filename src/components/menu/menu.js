@@ -33,11 +33,16 @@ const menuItems = [
     type: 1,
     title: 'Schedule',
     url: 'schedule'
+  },
+  {
+    type: 1,
+    title: 'Favourites',
+    url: 'favourites'
   }
 ];
 
-const Menu = ({ onClose }) => (
-  <nav className={'menu'}>
+const Menu = ({ onClose, showMenu }) => (
+  <nav className={`menu${!showMenu ? ' menu--hide' : ''}`}>
     {menuItems.map(item => (
       <MenuItem onClose={onClose} key={item.title} {...item} />
     ))}
@@ -45,7 +50,8 @@ const Menu = ({ onClose }) => (
 );
 
 Menu.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  showMenu: PropTypes.bool.isRequired
 };
 
 export default Menu;

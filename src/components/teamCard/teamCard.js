@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { photoUrl } from '../../services/api';
 import './style.scss';
 
 const TeamCard = ({ name, constructorId, hideAdditionalMenu }) => (
@@ -12,7 +13,7 @@ const TeamCard = ({ name, constructorId, hideAdditionalMenu }) => (
     <div className={'team-card__title'}>{name}</div>
     <div className={'team-card__logo'}>
       <span className={`team-card__logo__color background-color-${constructorId}`} />
-      <img src={`/src/img/teams/${constructorId}.png`} alt={name} />
+      <img src={`${photoUrl}/teams/${constructorId}.png`} alt={name} />
     </div>
   </Link>
 );

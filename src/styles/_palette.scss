@@ -1,0 +1,136 @@
+$main-color: #e10600;
+$secondary-color: #1e1e1e;
+$mercedes: #00d2be;
+$ferrari: #dc0000;
+$red_bull: #1e41ff;
+$renault: #fff500;
+$racing_point: #f596c8;
+$haas: #bd9e57;
+$toro_rosso: #469bff;
+$mclaren: #ff8700;
+$alfa: #9b0000;
+$williams: #fff;
+
+.border-color-mercedes {
+  border-color: $mercedes;
+}
+
+.border-color-ferrari {
+  border-color: $ferrari;
+}
+
+.border-color-red_bull {
+  border-color: $red_bull;
+}
+
+.border-color-renault {
+  border-color: $renault;
+}
+
+.border-color-racing_point {
+  border-color: $racing_point;
+}
+
+.border-color-haas {
+  border-color: $haas;
+}
+
+.border-color-toro_rosso {
+  border-color: $toro_rosso;
+}
+
+.border-color-mclaren {
+  border-color: $mclaren;
+}
+
+.border-color-alfa {
+  border-color: $alfa;
+}
+
+.border-color-williams {
+  border-color: $williams;
+}
+
+div[class^="border-color-hover"] {
+  transition: border-color 0.3s ease;
+}
+
+.border-color-hover-mercedes:hover {
+  border-color: $mercedes;
+}
+
+.border-color-hover-ferrari:hover {
+  border-color: $ferrari;
+}
+
+.border-color-hover-red_bull:hover {
+  border-color: $red_bull;
+}
+
+.border-color-hover-renault:hover {
+  border-color: $renault;
+}
+
+.border-color-hover-racing_point:hover {
+  border-color: $racing_point;
+}
+
+.border-color-hover-haas:hover {
+  border-color: $haas;
+}
+
+.border-color-hover-toro_rosso:hover {
+  border-color: $toro_rosso;
+}
+
+.border-color-hover-mclaren:hover {
+  border-color: $mclaren;
+}
+
+.border-color-hover-alfa:hover {
+  border-color: $alfa;
+}
+
+.border-color-hover-williams:hover {
+  border-color: $williams;
+}
+
+.background-color-mercedes {
+  background-color: $mercedes;
+}
+
+.background-color-ferrari {
+  background-color: $ferrari;
+}
+
+.background-color-red_bull {
+  background-color: $red_bull;
+}
+
+.background-color-renault {
+  background-color: $renault;
+}
+
+.background-color-racing_point {
+  background-color: $racing_point;
+}
+
+.background-color-haas {
+  background-color: $haas;
+}
+
+.background-color-toro_rosso {
+  background-color: $toro_rosso;
+}
+
+.background-color-mclaren {
+  background-color: $mclaren;
+}
+
+.background-color-alfa {
+  background-color: $alfa;
+}
+
+.background-color-williams {
+  background-color: $williams;
+}

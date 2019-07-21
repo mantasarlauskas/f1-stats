@@ -1,0 +1,17 @@
+.xs-hide {
+  @media (max-width: $xs) {
+    display: none;
+  }
+}
+
+.m-hide {
+  @media (max-width: $m) {
+    display: none;
+  }
+}
+
+.l-hide {
+  @media (max-width: $l) {
+    display: none;
+  }
+}

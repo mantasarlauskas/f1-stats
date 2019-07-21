@@ -1,11 +1,18 @@
+@import '../../styles/_palette.scss';
+
 .team-card {
   border: 1px solid;
   border-top: none;
+  padding: 5px;
   border-left: none;
   border-bottom-right-radius: 5px;
   cursor: pointer;
   color: #FFF;
   text-decoration: none;
+
+  &:hover {
+    background-color: lighten($secondary-color, 4%);
+  }
 }
 
 .team-card__title {

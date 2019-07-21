@@ -13,7 +13,8 @@ const mapStateToProps = (
   team: teamSelector(state, id),
   teamStandings: teamStandingsSelector(state, id),
   drivers: teamDriversSelector(state, id),
-  isLoading: state.api.isLoading
+  isLoading: state.api.isLoading,
+  id
 });
 
 export default connect(mapStateToProps)(Team);

@@ -1,210 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Titillium Web', sans-serif;
-  box-sizing: border-box;
-}
-
-.circuit {
-  width: 80px;
-}
-
-.responsive-table {
-  overflow-x: auto;
-
-  @media (max-width: 576px) {
-    margin: 0 5%;
-  }
-}
-
-.table {
-  margin: 0 auto;
-  width: 90%;
-  border-radius: 5px;
-  border-collapse: collapse;
-  background-color: #fff;
-
-  th {
-    padding: 10px 5px;
-  }
-}
-
-.table__row {
-  height: 50px;
-  text-align: center;
-
-  &:hover {
-    background-color: #f7f4f1;
-  }
-
-  td {
-    padding: 5px;
-  }
-}
-
-.table__row--wait {
-  td {
-    height: 100px;
-  }
-}
-
-.table__row--clickable {
-  td {
-    cursor: pointer;
-  }
-}
+@import '../../styles/_globals.scss';
 
 .page {
   min-height: calc(100vh - 180px);
-  padding-bottom: 50px;
-  background-color: #f7f4f1;
+  padding-bottom: 70px;
+  background-color: darken(#f7f4f1, 5%);
 
-  @media (max-width: 992px) {
-    min-height: calc(100vh - 180px - 14px);
-  }
-
-  @media (max-width: 576px) {
+  @media (max-width: $l) {
     min-height: calc(100vh - 144px);
+    padding-bottom: 40px;
   }
 }
 
 .content {
   margin-top: 100px;
 
-  @media (max-width: 992px) {
-    margin-top: 114px;
-  }
-
-  @media (max-width: 576px) {
+  @media (max-width: $l) {
     margin-top: 64px;
   }
 }
 
-.empty {
-  text-align: center;
-  font-weight: bold;
-  font-size: 24px;
-}
 
-.title {
-  text-align: center;
-  border-color: gray;
-  padding: 30px 0;
-  font-size: 24px;
-  text-transform: uppercase;
-}
-
-.title--main {
-  border-color: black;
-  font-weight: bold;
-  padding-bottom: 0;
-}
-
-.standings {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.container {
-  padding-top: 70px;
-}
-
-.xs-hide {
-  @media (max-width: 576px) {
-    display: none;
-  }
-}
-
-.m-hide {
-  @media (max-width: 992px) {
-    display: none;
-  }
-}
-
-.l-hide {
-  @media (max-width: 1200px) {
-    display: none;
-  }
-}
-
-.border-color-mercedes {
-  border-color: #00d2be;
-}
-
-.border-color-ferrari {
-  border-color: #dc0000;
-}
-
-.border-color-red_bull {
-  border-color: #1e41ff;
-}
-
-.border-color-renault {
-  border-color: #fff500;
-}
-
-.border-color-racing_point {
-  border-color: #f596c8;
-}
-
-.border-color-haas {
-  border-color: #bd9e57;
-}
-
-.border-color-toro_rosso {
-  border-color: #469bff;
-}
-
-.border-color-mclaren {
-  border-color: #ff8700;
-}
-
-.border-color-alfa {
-  border-color: #9b0000;
-}
-
-.border-color-williams {
-  border-color: #fff;
-}
-
-.background-color-mercedes {
-  background-color: #00d2be;
-}
-
-.background-color-ferrari {
-  background-color: #dc0000;
-}
-
-.background-color-red_bull {
-  background-color: #1e41ff;
-}
-
-.background-color-renault {
-  background-color: #fff500;
-}
-
-.background-color-racing_point {
-  background-color: #f596c8;
-}
-
-.background-color-haas {
-  background-color: #bd9e57;
-}
-
-.background-color-toro_rosso {
-  background-color: #469bff;
-}
-
-.background-color-mclaren {
-  background-color: #ff8700;
-}
-
-.background-color-alfa {
-  background-color: #9b0000;
-}
-
-.background-color-williams {
-  background-color: #fff;
-}

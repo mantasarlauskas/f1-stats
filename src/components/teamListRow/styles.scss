@@ -1,5 +1,10 @@
+@import '../../styles/_breakpoints.scss';
+@import '../../styles/_palette.scss';
+
 .team-list-row {
-  border: 1px #000 solid;
+  flex: 0 0 450px;
+  margin: 0 10px 35px 10px;
+  border: 2px $secondary-color solid;
   border-left: none;
   border-top: none;
   border-bottom-right-radius: 5px;
@@ -8,20 +13,27 @@
   color: #000;
   transition: background-color 0.25s ease-in, color 0.25s ease-in;
 
-  &:hover {
-    border-color: #FFF;
-    background-color: #e10600;
-    border-radius: 5px;
-    color: #FFF;
+  @media (max-width: $l) {
+    flex: 0 1 400px;
+  }
+
+  @media (max-width: $m) {
+    flex: 0 1 auto;
+  }
+
+  @media (max-width: $xs) {
+    flex: 0 1 400px;
   }
 }
 
 .team-list-row__title {
   text-align: center;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .team-list-row__image {
   display: flex;
   justify-content: center;
+  padding: 0 25px;
 }

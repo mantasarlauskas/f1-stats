@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import QualifyingRow from '../qualifyingRow';
+import ResultsMenu from '../resultsMenu';
 
-const Qualifying = ({ results }) => (
+const Qualifying = ({ results, id }) => (
   <Fragment>
     <div className={'title'}>Qualifying</div>
+    <ResultsMenu id={id} />
     <div className={'responsive-table'}>
       <table className={'table'}>
         <tbody>
@@ -18,6 +20,7 @@ const Qualifying = ({ results }) => (
             <th>Q2</th>
             <th>Q3</th>
           </tr>
+          <tr className={'spacer'} />
           {results.map(row => (
             <QualifyingRow key={row.Driver.driverId} {...row} />
           ))}
@@ -34,7 +37,8 @@ Qualifying.propTypes = {
         driverId: PropTypes.string.isRequired
       }).isRequired
     })
-  ).isRequired
+  ).isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default Qualifying;

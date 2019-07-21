@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { photoUrl } from '../../services/api';
 import './styles.scss';
 
 const MainCard = ({
   constructorId, name, url, title
 }) => (
   <Link to={`/${url}`} className={'main-card'}>
-    <img src={`/src/img/teams_big/${constructorId}.jpg`} alt={name} />
+    <img src={`${photoUrl}/teams_big/${constructorId}.jpg`} alt={name} />
     <div className={'main-card__title'}>{title}</div>
   </Link>
 );

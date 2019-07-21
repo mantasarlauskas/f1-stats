@@ -5,15 +5,13 @@ import F1Logo from '../../img/f1_logo.svg';
 import Menu from '../menu';
 import './styles.scss';
 
-const smallSize = 576;
+const largeSize = 1200;
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [width, setWidth] = useState(window.innerWidth);
 
   const handleResize = () => {
-    setWidth(window.innerWidth);
-    setShowMenu(window.innerWidth > smallSize ? false : showMenu);
+    setShowMenu(window.innerWidth > largeSize ? false : showMenu);
   };
 
   useEffect(() => {
@@ -29,7 +27,7 @@ const Header = () => {
       <Link onClick={() => setShowMenu(false)} to={'/'} className={'header__logo'}>
         <F1Logo />
       </Link>
-      {(showMenu || width > smallSize) && <Menu onClose={() => setShowMenu(false)} />}
+      <Menu showMenu={showMenu} onClose={() => setShowMenu(false)} />
     </header>
   );
 };

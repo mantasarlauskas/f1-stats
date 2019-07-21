@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import RaceRow from '../raceRow';
+import ResultsMenu from '../resultsMenu';
 
-const Race = ({ results }) => (
+const Race = ({ results, id }) => (
   <Fragment>
     <div className={'title'}>Race</div>
+    <ResultsMenu id={id} />
     <table className={'table'}>
       <tbody>
         <tr>
@@ -16,9 +18,9 @@ const Race = ({ results }) => (
           <th className={'m-hide'}>Laps</th>
           <th className={'xs-hide'}>Grid</th>
           <th>Time</th>
-          <th className={'xs-hide'}>Status</th>
           <th className={'xs-hide'}>Points</th>
         </tr>
+        <tr className={'spacer'} />
         {results.map(row => (
           <RaceRow key={row.Driver.driverId} {...row} />
         ))}
@@ -34,7 +36,8 @@ Race.propTypes = {
         driverId: PropTypes.string.isRequired
       }).isRequired
     })
-  ).isRequired
+  ).isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default Race;

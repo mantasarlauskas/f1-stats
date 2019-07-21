@@ -1,14 +1,14 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import ResultsRow from '../resultsRow';
 import Loading from '../loading';
-import fetchResults from '../../thunks/races';
+import { getRaces } from '../../services/api';
 
 export default () => {
   const [races, setRaces] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const results = await fetchResults();
+    const results = await getRaces();
     const filteredResults = results.filter(({ date }) => {
       const newDate = new Date(date);
       newDate.setDate(newDate.getDate() + 1);
@@ -32,9 +32,10 @@ export default () => {
       <table className={'table'}>
         <tbody>
           <tr>
-            <th>Round</th>
+            <th className={'xs-hide'}>Round</th>
             <th>Race</th>
             <th className={'m-hide'}>Circuit</th>
+            <th>Layout</th>
             <th className={'xs-hide'}>Date</th>
           </tr>
           {races.map(race => (

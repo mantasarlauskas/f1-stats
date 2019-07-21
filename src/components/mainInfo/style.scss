@@ -1,10 +1,12 @@
+@import '../../styles/_breakpoints.scss';
+
 .main-info {
   padding: 50px 10%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;
 
-  @media (max-width: 576px) {
+  @media (max-width: $s) {
     grid-template-columns: 1fr;
 
     & > *:not(:last-child) {

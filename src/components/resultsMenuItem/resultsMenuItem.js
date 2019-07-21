@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './styles.scss';
 
-const ResultsMenuItem = ({ id, url, item }) => {
+const ResultsMenuItem = ({
+  item,
+  id,
+  location: { pathname },
+}) => {
   const itemLink = item.replace(/\s/g, '').toLowerCase();
   return (
     <Link
@@ -11,7 +16,7 @@ const ResultsMenuItem = ({ id, url, item }) => {
       to={`/results/${id}/${itemLink}`}
       className={
         'results-menu-item '
-        + `${url.includes(itemLink) ? 'results-menu-item--active' : ''}`
+        + `${pathname.includes(itemLink) ? 'results-menu-item--active' : ''}`
       }
       onClick={() => window.scrollTo(0, 0)}
     >
@@ -22,8 +27,8 @@ const ResultsMenuItem = ({ id, url, item }) => {
 
 ResultsMenuItem.propTypes = {
   id: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   item: PropTypes.string.isRequired
 };
 
-export default ResultsMenuItem;
+export default withRouter(ResultsMenuItem);

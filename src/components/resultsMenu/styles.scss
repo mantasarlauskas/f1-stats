@@ -1,3 +1,5 @@
+@import '../../styles/_breakpoints.scss';
+
 .results-menu {
   position: fixed;
   right: 5%;
@@ -5,4 +7,20 @@
   z-index: 50;
   width: 150px;
   list-style: none;
+
+  @media (max-width: $m) {
+    position: static;
+    width: calc(90% - 2px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2px;
+  }
+}
+
+.results-menu + .table {
+  @media (max-width: $m) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 }

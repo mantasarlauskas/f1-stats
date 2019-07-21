@@ -52,5 +52,6 @@ export const teamDriversSelector = createSelector(
 export const driverTeamSelector = createSelector(
   teamsSelector,
   driverStandingsSelector,
+  // eslint-disable-next-line max-len
   (teams, standings) => teams.find(({ constructorId }) => standings && constructorId === standings.constructorId)
 );

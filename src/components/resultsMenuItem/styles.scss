@@ -1,6 +1,9 @@
+@import '../../styles/_palette.scss';
+@import '../../styles/_breakpoints.scss';
+
 .results-menu-item {
   display: block;
-  background-color: #e10600;
+  background-color: $main-color;
   color: #FFF;
   cursor: pointer;
   border: 1px #FFF solid;
@@ -10,8 +13,25 @@
   margin-bottom: 5px;
   text-decoration: none;
   text-align: center;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: darken($main-color, 5%);
+  }
+
+  @media (max-width: $m) {
+    margin-bottom: 0;
+    border: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 .results-menu-item--active {
-  background-color: rgb(21, 21, 30);
+  background-color: $secondary-color;
+
+  &:hover {
+    background-color: darken($secondary-color, 5%);
+  }
 }

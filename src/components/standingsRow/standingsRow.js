@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { photoUrl } from '../../services/api';
 import './styles.scss';
 
 const StandingsRow = ({
   driver, team: { name }, isDriver, points, position, constructorId
 }) => (
-  <div className={isDriver ? 'standings-row' : 'standings-row standings-row--short'}>
+  <Link
+    to={isDriver ? `/driver/${driver.driverId}` : `/team/${constructorId}`}
+    className={`border-color-hover-${constructorId}
+     ${isDriver ? 'standings-row' : 'standings-row standings-row--short'}`}
+  >
     <div className={'standings-row__number-wrapper'}>
       <span className={'standings-row__number'}>{position}</span>
       <span className={`standings-row__number-color background-color-${constructorId}`} />
@@ -19,13 +25,14 @@ const StandingsRow = ({
     <div className={isDriver ? 'xs-hide standings-row__driver-team' : 'standings-row__name--bold'}>
       {name}
     </div>
-    <img className={'m-hide'} src={`/src/img/teams/${constructorId}.png`} alt={name} />
+    <img className={'m-hide'} src={`${photoUrl}/teams/${constructorId}.png`} alt={name} />
     <div className={'standings-row__points'}>{points}</div>
-  </div>
+  </Link>
 );
 
 StandingsRow.propTypes = {
   driver: PropTypes.shape({
+    driverId: PropTypes.string.isRequired,
     givenName: PropTypes.string.isRequired,
     familyName: PropTypes.string.isRequired
   }),

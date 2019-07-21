@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DriverRow from '../driverRow';
 import Loading from '../loading';
 
-const DriverStandings = ({ driverStandings, isLoading }) => (isLoading ? (
+const DriverStandings = ({ driverStandings, isLoading }) => isLoading ? (
   <div className={'container'}>
     <Loading size={100} />
   </div>
@@ -16,7 +16,7 @@ const DriverStandings = ({ driverStandings, isLoading }) => (isLoading ? (
       ))}
     </div>
   </Fragment>
-));
+);
 
 DriverStandings.propTypes = {
   driverStandings: PropTypes.arrayOf(

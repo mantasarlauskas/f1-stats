@@ -1,17 +1,13 @@
+@import '../../styles/_breakpoints.scss';
+
 .drivers {
   width: 90%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 25px;
-  grid-row-gap: 25px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 
-  @media (max-width: 1200px) {
-    grid-template-columns: auto auto;
-  }
-
-  @media (max-width: 576px) {
-    grid-template-columns: auto;
+  @media (max-width: $m) {
+    width: 100%;
   }
 }
